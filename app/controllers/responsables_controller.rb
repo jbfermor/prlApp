@@ -13,7 +13,7 @@ class ResponsablesController < ApplicationController
 
   # GET /responsables/new
   def new
-		#@empresa = Empresa.find(params[:empresa_id])
+		@empresa = Empresa.find(params[:empresa_id])
     @responsable = Responsable.new
   end
 

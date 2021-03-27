@@ -28,8 +28,11 @@
 						<td><%= responsable.nombre %></td>
 						<td><%= responsable.apellidos %></td>
 						<td><%= responsable.cargo %></td>
-						<td><%= link_to 'Edit', edit_empresa_responsable_path(@empresa, responsable) %></td>
-						<td><%= link_to 'Destroy', empresa_responsable_path(@empresa, responsable), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						<td><%= link_to 'Editar', edit_empresa_responsable_path(@empresa, responsable),
+							class: "btn btn-small btn-warning" %></td>
+						<td><%= link_to 'Eliminar', empresa_responsable_path(@empresa, responsable),
+							 method: :delete, data: { confirm: '¿Seguro?' },
+							 class: "btn btn-small btn-danger"  %></td>
 					</tr>
 				<% end %>
 			<% end %>

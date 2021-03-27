@@ -6,15 +6,6 @@
 	</div>
 <% end %>
 
-<div class="row bg-light rounded p-3 text-white">
-	<div class="d-flex justify-content-evenly">
-		<%= link_to "Responsables", empresa_responsables_path(@empresa),
-		 class: "btn btn-primary" %>
-		<%= link_to "Centros", empresa_responsables_path(@empresa), class: "btn btn-primary" %>
-		<%= link_to "Trabajadores", empresa_responsables_path(@empresa), class: "btn btn-primary" %>
-	</div>
-</div>
-
 <div class="row">
 	<p>
 	  <strong>Razon social:</strong>
@@ -66,7 +57,113 @@
 	</p>
 </div>
 
+<div class="row">
+	<%= link_to 'Edit', edit_empresa_path(@empresa) %>
+	<%= link_to 'Back', empresas_path %>
+</div>
 
+<div class="row bg-light rounded p-3 text-white">
+	<div class="d-flex justify-content-evenly">
+		<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+		 data-bs-target="#responsables" aria-expanded="false"
+		 aria-controls="responsables">Responsables</button>
+		 <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+	 	 data-bs-target="#centros" aria-expanded="false"
+	 	 aria-controls="centros">Centros</button>
+		 <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+	 	 data-bs-target="#trabajadores" aria-expanded="false"
+	 	 aria-controls="trabajadores">Trabajadores</button>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_empresa_path(@empresa) %> |
-<%= link_to 'Back', empresas_path %>
+<div class="row">
+	<div class="collapse multi-collapse" id="responsables">
+		<h2>Responsables</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre y apellidos</th>
+					<th>Cargo</th>
+					<th colspan="3">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @empresa.responsables.each do |r| %>
+					<tr>
+						<td><%= r.nombre + " " + r.apellidos %></td>
+						<td><%= r.cargo %></td>
+						<td><%= link_to 'Mostrar', empresa_responsable_path(@empresa, r),
+							class: "btn btn-small btn-info" %></td>
+						<td><%= link_to 'Editar', edit_empresa_responsable_path(@empresa, r),
+							class: "btn btn-small btn-warning" %></td>
+						<td><%= link_to 'Eliminar', empresa_responsable_path(@empresa, r),
+							 method: :delete, data: { confirm: '¿Seguro?' },
+							 class: "btn btn-small btn-danger"  %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="col-12 text-end">
+			<%= link_to 'Añadir responsable', new_empresa_responsable_path(@empresa),
+			 class: "btn btn-dark" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="collapse multi-collapse" id="centros">
+		<h2>Centros</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre del Centro</th>
+					<th>Direccion</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @empresa.responsables.each do |r| %>
+					<tr>
+						<td><%= r.nombre %></td>
+						<td><%= r.apellidos %></td>
+						<td><%= r.cargo %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="col-12 text-end">
+			<%= link_to 'Añadir Centro', new_empresa_responsable_path(@empresa),
+			 class: "btn btn-dark" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="collapse multi-collapse" id="trabajadores">
+		<h2>Trabajadores</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellidos</th>
+					<th>Dni</th>
+					<th>Centro</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @empresa.responsables.each do |r| %>
+					<tr>
+						<td><%= r.nombre %></td>
+						<td><%= r.apellidos %></td>
+						<td><%= r.cargo %></td>
+						<td><%= r.cargo %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="col-12 text-end">
+			<%= link_to 'Añadir Trabajador', new_empresa_responsable_path(@empresa),
+			 class: "btn btn-dark" %>
+		</div>
+	</div>
+</div>
