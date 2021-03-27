@@ -3,9 +3,11 @@
 one:
   nombre: MyString
   apellidos: MyString
+  email: prueba@prueba.com
   telefono: 1
 
 two:
   nombre: MyString
   apellidos: MyString
+  email: pruebatwo@prueba.com
   telefono: 1
