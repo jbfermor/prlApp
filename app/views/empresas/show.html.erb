@@ -1,49 +1,72 @@
-<p id="notice"><%= notice %></p>
+<% if @empresa.responsables.empty? %>
+	<div class="row">
+		<div class="alert alert-danger text-center">
+			No hay asignado ningún responsable
+		</div>
+	</div>
+<% end %>
 
-<p>
-  <strong>Razon social:</strong>
-  <%= @empresa.razon_social %>
-</p>
+<div class="row bg-light rounded p-3 text-white">
+	<div class="d-flex justify-content-evenly">
+		<%= link_to "Responsables", empresa_responsables_path(@empresa),
+		 class: "btn btn-primary" %>
+		<%= link_to "Centros", empresa_responsables_path(@empresa), class: "btn btn-primary" %>
+		<%= link_to "Trabajadores", empresa_responsables_path(@empresa), class: "btn btn-primary" %>
+	</div>
+</div>
 
-<p>
-  <strong>Cif:</strong>
-  <%= @empresa.cif %>
-</p>
+<div class="row">
+	<p>
+	  <strong>Razon social:</strong>
+	  <%= @empresa.razon_social %>
+	</p>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @empresa.direccion %>
-</p>
+	<p>
+	  <strong>Cif:</strong>
+	  <%= @empresa.cif %>
+	</p>
 
-<p>
-  <strong>Poblacion:</strong>
-  <%= @empresa.poblacion %>
-</p>
+	<p>
+	  <strong>Direccion:</strong>
+	  <%= @empresa.direccion %>
+	</p>
 
-<p>
-  <strong>Provincia:</strong>
-  <%= @empresa.provincia %>
-</p>
+	<p>
+	  <strong>Poblacion:</strong>
+	  <%= @empresa.poblacion %>
+	</p>
 
-<p>
-  <strong>Cp:</strong>
-  <%= @empresa.cp %>
-</p>
+	<p>
+	  <strong>Provincia:</strong>
+	  <%= @empresa.provincia %>
+	</p>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @empresa.telefono %>
-</p>
+	<p>
+	  <strong>Cp:</strong>
+	  <%= @empresa.cp %>
+	</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @empresa.email %>
-</p>
+	<p>
+	  <strong>Telefono:</strong>
+	  <%= @empresa.telefono %>
+	</p>
 
-<p>
-  <strong>T fuera:</strong>
-  <%= @empresa.t_fuera %>
-</p>
+	<p>
+	  <strong>Email:</strong>
+	  <%= @empresa.email %>
+	</p>
+
+	<p>
+	  <strong>T fuera:</strong>
+		<% if @empresa.t_fuera == 0 %>
+	  	No
+		<% else %>
+			Sí
+		<% end %>
+	</p>
+</div>
+
+
 
 <%= link_to 'Edit', edit_empresa_path(@empresa) %> |
 <%= link_to 'Back', empresas_path %>

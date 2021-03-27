@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :empresas
+
 	root to: "home#index"
+  resources :empresas do
+		resources :responsables
+  end
   devise_for :users
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

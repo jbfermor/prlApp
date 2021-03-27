@@ -13,6 +13,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/new
   def new
     @empresa = Empresa.new
+		@t_fuera_select = {"SI":1, "NO":0}
   end
 
   # GET /empresas/1/edit

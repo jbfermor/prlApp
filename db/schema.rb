@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_162831) do
+ActiveRecord::Schema.define(version: 2021_03_27_175926) do
 
   create_table "empresas", force: :cascade do |t|
     t.string "razon_social"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2021_03_27_162831) do
     t.integer "t_fuera"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "responsables", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellidos"
+    t.string "nif"
+    t.string "cargo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "empresa_id", null: false
+    t.index ["empresa_id"], name: "index_responsables_on_empresa_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -49,5 +60,6 @@ ActiveRecord::Schema.define(version: 2021_03_27_162831) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "responsables", "empresas"
   add_foreign_key "users", "roles"
 end

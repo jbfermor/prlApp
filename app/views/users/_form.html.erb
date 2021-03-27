@@ -1,32 +1,51 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row">
+	<%= form_with(model: user) do |form| %>
+	  <% if user.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+	      <ul>
+	        <% user.errors.each do |error| %>
+	          <li><%= error.full_message %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre %>
-  </div>
+		<div class="field">
+	    <%= form.label "Usuario", class: "form-label" %>
+	    <%= form.text_field :email, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :apellidos %>
-    <%= form.text_field :apellidos %>
-  </div>
+		<div class="field">
+	    <%= form.label :password, class: "form-label" %>
+	    <%= form.text_field :password, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :telefono %>
-    <%= form.number_field :telefono %>
-  </div>
+	  <div class="field">
+	    <%= form.label :nombre, class: "form-label" %>
+	    <%= form.text_field :nombre, class: "form-control" %>
+	  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+	  <div class="field">
+	    <%= form.label :apellidos, class: "form-label" %>
+	    <%= form.text_field :apellidos, class: "form-control" %>
+	  </div>
+
+	  <div class="field">
+	    <%= form.label :telefono, class: "form-label" %>
+	    <%= form.number_field :telefono, class: "form-control" %>
+	  </div>
+
+		<div class="field">
+			<%= form.label "Permisos", class: "form-label" %>
+			<%= collection_select(:user, :role_id, Role.all, :id, :name,
+				{:prompt => "Selecciona los permisos"}, {:class => "form-select"}) %>
+		</div>
+
+	  <div class="actions">
+	    <%= form.submit "Guardar usuario", class: "btn btn-dark" %>
+	  </div>
+		
+	<% end %>
+</div>

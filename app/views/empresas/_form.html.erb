@@ -1,62 +1,68 @@
-<%= form_with(model: empresa) do |form| %>
-  <% if empresa.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+<div class="row">
+	<%= form_with(model: empresa) do |form| %>
+	  <% if empresa.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
 
-      <ul>
-        <% empresa.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+	      <ul>
+	        <% empresa.errors.each do |error| %>
+	          <li><%= error.full_message %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-  <div class="field">
-    <%= form.label :razon_social %>
-    <%= form.text_field :razon_social %>
-  </div>
+	  <div class="field">
+	    <%= form.label :razon_social, class: "form-label" %>
+	    <%= form.text_field :razon_social, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :cif %>
-    <%= form.text_field :cif %>
-  </div>
+	  <div class="field">
+	    <%= form.label :cif, class: "form-label" %>
+	    <%= form.text_field :cif, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :direccion %>
-    <%= form.text_field :direccion %>
-  </div>
+	  <div class="field">
+	    <%= form.label :direccion, class: "form-label" %>
+	    <%= form.text_field :direccion, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :poblacion %>
-    <%= form.text_field :poblacion %>
-  </div>
+	  <div class="field">
+	    <%= form.label :poblacion, class: "form-label" %>
+	    <%= form.text_field :poblacion, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :provincia %>
-    <%= form.text_field :provincia %>
-  </div>
+	  <div class="field">
+	    <%= form.label :provincia, class: "form-label" %>
+	    <%= form.text_field :provincia, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :cp %>
-    <%= form.number_field :cp %>
-  </div>
+	  <div class="field">
+	    <%= form.label :cp, class: "form-label" %>
+	    <%= form.number_field :cp, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :telefono %>
-    <%= form.number_field :telefono %>
-  </div>
+	  <div class="field">
+	    <%= form.label :telefono, class: "form-label" %>
+	    <%= form.number_field :telefono, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+	  <div class="field">
+	    <%= form.label :email, class: "form-label" %>
+	    <%= form.text_field :email, class: "form-control" %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :t_fuera %>
-    <%= form.number_field :t_fuera %>
-  </div>
+	  <div class="field">
+	    <%= form.label "¿Tiene algún trabajador en centros de trabajo ajenos?",
+			 class: "form-label" %>
+			<%= form.select :t_fuera, options_for_select(@t_fuera_select), {}, 
+			{:class => "form-select"} %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+	  </div>
+
+	  <div class="actions">
+	    <%= form.submit "Guardar empresa", class: "btn btn-dark" %>
+	  </div>
+
+	<% end %>
+</div>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @responsable.nombre %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @responsable.apellidos %>
+</p>
+
+<p>
+  <strong>Nif:</strong>
+  <%= @responsable.nif %>
+</p>
+
+<p>
+  <strong>Cargo:</strong>
+  <%= @responsable.cargo %>
+</p>
+
+<p>
+  <strong>Belongs to:</strong>
+  <%= @responsable.belongs_to %>
+</p>
+
+<%= link_to 'Edit', edit_responsable_path(@responsable) %> |
+<%= link_to 'Back', responsables_path %>
