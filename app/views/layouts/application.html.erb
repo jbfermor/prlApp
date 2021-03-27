@@ -13,28 +13,26 @@
   </head>
 
   <body>
-
 		<% if user_signed_in? %>
-		  Signed in as <%= current_user.email %>. Not you?
-		  <%= link_to "Edit profile", edit_user_registration_path %>
-		  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-		<% else %>
-		  <%= link_to "Sign up", new_user_registration_path %> or
-		  <%= link_to "sign in", new_user_session_path %>
+			<div class="row text-end">
+				<p>Sesión iniciada como <%= current_user.email %></p>
+			</div>
 		<% end %>
 
 		<%= render "layouts/nav" %>
 
 		<div class="row">
 			<% flash.each do |name, msg| %>
-				<%= content_tag :div, msg, id: "flash_#{name}" %>
+				<div class="alert alert-info text-center">
+					<%= content_tag :div, msg, id: "flash_#{name}" %>
+				</div>
 			<% end %>
 		</div>
 
 		<div class="container">
 			<%= yield %>
 		</div>
-		
+
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
   </body>

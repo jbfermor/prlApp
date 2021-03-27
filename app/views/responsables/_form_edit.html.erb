@@ -1,0 +1,38 @@
+<%= form_with model: @responsable, url: empresa_responsable_path,
+method: :patch do |form| %>
+  <% if responsable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(responsable.errors.count, "error") %> prohibited this responsable from being saved:</h2>
+
+      <ul>
+        <% responsable.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellidos, class: "form-label" %>
+    <%= form.text_field :apellidos, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nif, class: "form-label" %>
+    <%= form.text_field :nif, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cargo, class: "form-label" %>
+    <%= form.text_field :cargo, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar responsable", class: "btn btn-dark" %>
+  </div>
+<% end %>
