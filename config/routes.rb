@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+
 	root to: "empresas#index"
   resources :empresas do
 		resources :responsables
+		resources :centros
   end
   devise_for :users
   resources :users

@@ -3,4 +3,5 @@
 <%= render 'form_edit', responsable: @responsable %>
 
 <%= link_to 'Mostrar', empresa_responsable_path(@responsable) %> |
-<%= link_to 'Atrás', empresa_path(@empresa) %>
+<%= link_to 'Atrás', empresa_path(@empresa),
+		class: "btn btn-danger text-white" %>

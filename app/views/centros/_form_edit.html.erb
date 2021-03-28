@@ -1,0 +1,269 @@
+<%= form_with model: centro, url: empresa_centro_path,
+ 		method: :patch do |form| %>
+  <% if centro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(centro.errors.count, "error") %> prohibited this centro from being saved:</h2>
+
+      <ul>
+        <% centro.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion, class: "form-label" %>
+    <%= form.text_field :direccion, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :poblacion, class: "form-label" %>
+    <%= form.text_field :poblacion, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :provincia, class: "form-label" %>
+    <%= form.text_field :provincia, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cp, class: "form-label" %>
+    <%= form.number_field :cp, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :actividad, class: "form-label" %>
+    <%= form.text_field :actividad, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Número de trabajadores", class: "form-label" %>
+    <%= form.number_field :n_trabajadores, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Localización", class: "form-label" %>
+		<%= form.select :localizacion, options_for_select(@localizacion_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Superficie en m2", class: "form-label" %>
+    <%= form.number_field :superficie, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Número de plantas del edificio", class: "form-label" %>
+    <%= form.number_field :plantas_ocupadas, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Aforo máximo", class: "form-label" %>
+    <%= form.number_field :aforo_max, class: "form-control" %>
+  </div>
+
+	<div class="row">
+		<h2>Entorno</h2>
+	</div>
+
+  <div class="field">
+    <%= form.label "El centro se localiza en un entorno: ", class: "form-label" %>
+		<%= form.select :entorno, options_for_select(@entorno_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+	<div class="row">
+		<h5>Indique las actividades de los locales que lindan/limitan con el centro de trabajo.
+			En caso de ser una vía, indíquelo (por ejemplo "Calle con acerado y tráfico rodado")</h5>
+	</div>
+
+  <div class="field">
+    <%= form.label "Por la derecha: ", class: "form-label" %>
+    <%= form.text_field :act_derecha, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Por la izquierda: ", class: "form-label" %>
+    <%= form.text_field :act_izquierda, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Por el frontal: ", class: "form-label" %>
+    <%= form.text_field :act_frontal, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Por la parte trasera: ", class: "form-label" %>
+    <%= form.text_field :act_trasera, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Por la parte superior: ", class: "form-label" %>
+    <%= form.text_field :act_superior, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Por la parte inferior: ", class: "form-label" %>
+    <%= form.text_field :act_inferior, class: "form-control" %>
+  </div>
+
+	<div class="row">
+		<h5>Accesos</h5>
+	</div>
+
+  <div class="field">
+    <%= form.label "indicar cómo acceden al centro los empleados",
+		 class: "form-label" %>
+		<%= form.select :acceso_empleados, options_for_select(@accesos_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "indicar cómo acceden al centro los clientes",
+		 class: "form-label" %>
+		<%= form.select :acceso_clientes, options_for_select(@accesos_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+	<div class="row">
+	  <h5>Instalaciones existentes</h5>
+	</div>
+
+  <div class="field">
+    <%= form.label "¿Tiene instalación eléctrica de baja tensión?",
+		 class: "form-label" %>
+		<%= form.select :inst_baja_tension, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "El cuadro general de protección se ubica en: ",
+		 class: "form-label" %>
+    <%= form.text_field :ubicacion_cuadro_general, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Tiene Centro de Transormación (CT) perteneciente al centro de trabajo?",
+		 class: "form-label" %>
+		<%= form.select :es_ct, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "En caso afirmativo, ¿está el CT ubicado en el interior de la edificación?",
+		 class: "form-label" %>
+		<%= form.select :ub_interior_ct, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Está el CT ubicado en el exterior de una caseta independiente?",
+		 class: "form-label" %>
+		<%= form.select :ub_caseta_ext_ct, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Indicar la potencia del CT en Kva:", class: "form-label" %>
+    <%= form.number_field :potencia_ct, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Empresa mantenedora del CT:", class: "form-label" %>
+    <%= form.text_field :e_mant_ct, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Tiene instalación de calefacción/acondicionamiento de aire?",
+		 class: "form-label" %>
+		<%= form.select :es_aacc, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Tiene instalación de calefacción/acondicionamiento de aire?",
+		 class: "form-label" %>
+		<%= form.select :es_aacc, options_for_select(@aacc),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Tiene sistemas de ventilación?", class: "form-label" %>
+		<%= form.select :es_ventilacion, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sit_ventilacion, class: "form-label" %>
+		<%= form.select :es_ventilacion, options_for_select(@s_vent),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Tiene ascensores/montacargas?", class: "form-label" %>
+		<%= form.select :es_ascensor, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "En caso afirmativo indique cuántos:", class: "form-label" %>
+    <%= form.number_field :n_ascensores, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "¿Tiene aparatos o cámaras friforíficas?",
+			class: "form-label" %>
+		<%= form.select :es_frio, options_for_select(@sino_select),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Indique el número de cámaras de congelados:",
+		 class: "form-label" %>
+    <%= form.number_field :n_cam_congelados, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Indique el número de cámaras de frio:",
+		 class: "form-label" %>
+    <%= form.number_field :n_cam_frio, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Indique la ubicación de los equipos compresores:",
+		 class: "form-label" %>
+		<%= form.select :es_frio, options_for_select(@ub_comp),
+		{:prompt => "Selecciona..."},
+		{:class => "form-select"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Otras instalaciones y equipos de trabajo",
+		 class: "form-label" %>
+    <%= form.text_field :otras_inst, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar Centro", class: "btn btn-dark text-white" %>
+  </div>
+<% end %>

@@ -1,10 +1,10 @@
 class ResponsablesController < ApplicationController
+	before_action :authenticate_user!
   before_action :set_responsable, only: %i[ show edit update destroy ]
 
   # GET /responsables or /responsables.json
   def index
-		@empresa = Empresa.find(params[:empresa_id])
-    @responsables = Responsable.where(empresa: @empresa)
+    @responsables = Responsable.all
   end
 
   # GET /responsables/1 or /responsables/1.json
@@ -29,7 +29,7 @@ class ResponsablesController < ApplicationController
   def create
 		@empresa = Empresa.find(params[:empresa_id])
     @responsable = Responsable.new(responsable_params)
-		@responsable.empresa_id = params[:empresa_id]
+		@responsable.empresa_id = @empresa.id
     respond_to do |format|
       if @responsable.save
         format.html { redirect_to empresa_path(@empresa),

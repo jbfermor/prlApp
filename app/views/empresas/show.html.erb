@@ -88,18 +88,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @empresa.responsables.each do |r| %>
+				<% if @empresa.responsables.empty? %>
 					<tr>
-						<td><%= r.nombre + " " + r.apellidos %></td>
-						<td><%= r.cargo %></td>
-						<td><%= link_to 'Mostrar', empresa_responsable_path(@empresa, r),
-							class: "btn btn-small btn-info" %></td>
-						<td><%= link_to 'Editar', edit_empresa_responsable_path(@empresa, r),
-							class: "btn btn-small btn-warning" %></td>
-						<td><%= link_to 'Eliminar', empresa_responsable_path(@empresa, r),
-							 method: :delete, data: { confirm: '¿Seguro?' },
-							 class: "btn btn-small btn-danger"  %></td>
+						<td colspan="5">No hay ningún responsable creado todavía</td>
 					</tr>
+				<% else %>
+					<% @empresa.responsables.each do |r| %>
+						<tr>
+							<td><%= r.nombre + " " + r.apellidos %></td>
+							<td><%= r.cargo %></td>
+							<td><%= link_to 'Mostrar', empresa_responsable_path(@empresa, r),
+								class: "btn btn-small btn-info" %></td>
+							<td><%= link_to 'Editar', edit_empresa_responsable_path(@empresa, r),
+								class: "btn btn-small btn-warning" %></td>
+							<td><%= link_to 'Eliminar', empresa_responsable_path(@empresa, r),
+								 method: :delete, data: { confirm: '¿Seguro?' },
+								 class: "btn btn-small btn-danger"  %></td>
+						</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>
@@ -118,21 +124,35 @@
 				<tr>
 					<th>Nombre del Centro</th>
 					<th>Direccion</th>
-					<th>Acciones</th>
+					<th>Poblacion</th>
+					<th colspan="3">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
-				<% @empresa.responsables.each do |r| %>
+				<% if @empresa.centros.empty? %>
 					<tr>
-						<td><%= r.nombre %></td>
-						<td><%= r.apellidos %></td>
-						<td><%= r.cargo %></td>
+						<td colspan="5">No hay ningún responsable creado todavía</td>
 					</tr>
+				<% else %>
+					<% @empresa.centros.each do |c| %>
+						<tr>
+							<td><%= c.nombre %></td>
+							<td><%= c.direccion %></td>
+							<td><%= c.poblacion %></td>
+							<td><%= link_to 'Mostrar', empresa_centro_path(@empresa, c),
+								class: "btn btn-small btn-info" %></td>
+							<td><%= link_to 'Editar', edit_empresa_centro_path(@empresa, c),
+								class: "btn btn-small btn-warning" %></td>
+							<td><%= link_to 'Eliminar', empresa_centro_path(@empresa, c),
+								 method: :delete, data: { confirm: '¿Seguro?' },
+								 class: "btn btn-small btn-danger"  %></td>
+						</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>
 		<div class="col-12 text-end">
-			<%= link_to 'Añadir Centro', new_empresa_responsable_path(@empresa),
+			<%= link_to 'Añadir Centro', new_empresa_centro_path(@empresa),
 			 class: "btn btn-dark" %>
 		</div>
 	</div>

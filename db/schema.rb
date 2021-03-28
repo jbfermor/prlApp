@@ -10,7 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_175926) do
+ActiveRecord::Schema.define(version: 2021_03_28_095500) do
+
+  create_table "centros", force: :cascade do |t|
+    t.string "nombre"
+    t.string "direccion"
+    t.string "poblacion"
+    t.string "provincia"
+    t.integer "cp"
+    t.string "actividad"
+    t.integer "n_trabajadores"
+    t.string "localizacion"
+    t.integer "superficie"
+    t.integer "plantas_ocupadas"
+    t.integer "aforo_max"
+    t.string "entorno"
+    t.string "act_derecha"
+    t.string "act_izquierda"
+    t.string "act_frontal"
+    t.string "act_trasera"
+    t.string "act_superior"
+    t.string "act_inferior"
+    t.string "acceso_empleados"
+    t.string "accesso_clientes"
+    t.integer "inst_baja_tension"
+    t.string "ubicacion_cuadro_general"
+    t.integer "es_ct"
+    t.integer "ub_interior_ct"
+    t.integer "ub_caseta_ext_ct"
+    t.integer "potencia_ct"
+    t.string "e_mant_ct"
+    t.integer "es_aacc"
+    t.string "sit_aacc"
+    t.integer "es_ventilacion"
+    t.string "sit_ventilacion"
+    t.integer "es_ascensor"
+    t.integer "n_ascensores"
+    t.integer "es_frio"
+    t.integer "n_cam_congelados"
+    t.integer "n_cam_frio"
+    t.string "ub_compresores"
+    t.string "otras_inst"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "empresa_id", null: false
+    t.index ["empresa_id"], name: "index_centros_on_empresa_id"
+  end
 
   create_table "empresas", force: :cascade do |t|
     t.string "razon_social"
@@ -60,6 +105,7 @@ ActiveRecord::Schema.define(version: 2021_03_27_175926) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "centros", "empresas"
   add_foreign_key "responsables", "empresas"
   add_foreign_key "users", "roles"
 end

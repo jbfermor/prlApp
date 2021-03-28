@@ -1,4 +1,5 @@
 class EmpresasController < ApplicationController
+	before_action :authenticate_user!
   before_action :set_empresa, only: %i[ show edit update destroy ]
 
   # GET /empresas or /empresas.json

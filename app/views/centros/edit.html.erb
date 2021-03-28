@@ -1,0 +1,15 @@
+<div class="row">
+	<h1>Editando Centro <%= @centro.nombre %></h1>
+</div>
+
+<%= render 'form_edit', centro: @centro %>
+
+<div class="row">
+	<%= link_to 'Mostrar', empresa_centro_path(@centro),
+			class: "btn btn-warning text-white" %>
+</div>
+
+<div class="row">
+	<%= link_to 'Atrás', empresa_path(@empresa),
+			class: "btn btn-danger text-white" %>
+</div>
