@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Nombre:</strong>
@@ -20,10 +19,5 @@
   <%= @responsable.cargo %>
 </p>
 
-<p>
-  <strong>Belongs to:</strong>
-  <%= @responsable.belongs_to %>
-</p>
-
-<%= link_to 'Edit', edit_responsable_path(@responsable) %> |
-<%= link_to 'Back', responsables_path %>
+<%= link_to 'Editar', edit_empresa_responsable_path(@empresa, @responsable) %>
+<%= link_to 'Atrás', empresa_path(@empresa) %>

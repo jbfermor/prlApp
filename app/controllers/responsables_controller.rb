@@ -9,6 +9,8 @@ class ResponsablesController < ApplicationController
 
   # GET /responsables/1 or /responsables/1.json
   def show
+		@empresa = Empresa.find(params[:empresa_id])
+		@responsable = Responsable.find(params[:id])
   end
 
   # GET /responsables/new
