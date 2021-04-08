@@ -9,8 +9,8 @@ class ResponsablesController < ApplicationController
 
   # GET /responsables/1 or /responsables/1.json
   def show
-		@empresa = Empresa.find(params[:empresa_id])
 		@responsable = Responsable.find(params[:id])
+		@empresa = @responsable.empresa
   end
 
   # GET /responsables/new
@@ -21,8 +21,8 @@ class ResponsablesController < ApplicationController
 
   # GET /responsables/1/edit
   def edit
-		@empresa = Empresa.find(params[:empresa_id])
 		@responsable = Responsable.find(params[:id])
+		@empresa = @responsable.empresa
   end
 
   # POST /responsables or /responsables.json
@@ -44,10 +44,9 @@ class ResponsablesController < ApplicationController
 
   # PATCH/PUT /responsables/1 or /responsables/1.json
   def update
-		@empresa = Empresa.find(params[:empresa_id])
     respond_to do |format|
       if @responsable.update(responsable_params)
-        format.html { redirect_to empresa_path(@empresa),
+        format.html { redirect_to empresa_path(@responsable.empresa.id),
 					 notice: "Responsable guardado correctamente" }
         format.json { render :show, status: :ok, location: @responsable }
       else
@@ -59,10 +58,9 @@ class ResponsablesController < ApplicationController
 
   # DELETE /responsables/1 or /responsables/1.json
   def destroy
-		@empresa = Empresa.find(params[:empresa_id])
     @responsable.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_path(@empresa), notice: "Responsable eliminado correctamente" }
+      format.html { redirect_to empresa_path(@responsable.empresa.id), notice: "Responsable eliminado correctamente" }
       format.json { head :no_content }
     end
   end

@@ -97,11 +97,11 @@
 						<tr>
 							<td><%= r.nombre + " " + r.apellidos %></td>
 							<td><%= r.cargo %></td>
-							<td><%= link_to 'Mostrar', empresa_responsable_path(@empresa, r),
+							<td><%= link_to 'Mostrar', responsable_path(r),
 								class: "btn btn-small btn-info" %></td>
-							<td><%= link_to 'Editar', edit_empresa_responsable_path(@empresa, r),
+							<td><%= link_to 'Editar', edit_responsable_path(r),
 								class: "btn btn-small btn-warning" %></td>
-							<td><%= link_to 'Eliminar', empresa_responsable_path(@empresa, r),
+							<td><%= link_to 'Eliminar', responsable_path(r),
 								 method: :delete, data: { confirm: '¿Seguro?' },
 								 class: "btn btn-small btn-danger"  %></td>
 						</tr>
@@ -139,11 +139,11 @@
 							<td><%= c.nombre %></td>
 							<td><%= c.direccion %></td>
 							<td><%= c.poblacion %></td>
-							<td><%= link_to 'Mostrar', empresa_centro_path(@empresa, c),
+							<td><%= link_to 'Mostrar', centro_path(c),
 								class: "btn btn-small btn-info" %></td>
-							<td><%= link_to 'Editar', edit_empresa_centro_path(@empresa, c),
+							<td><%= link_to 'Editar', edit_centro_path(c),
 								class: "btn btn-small btn-warning" %></td>
-							<td><%= link_to 'Eliminar', empresa_centro_path(@empresa, c),
+							<td><%= link_to 'Eliminar', centro_path(c),
 								 method: :delete, data: { confirm: '¿Seguro?' },
 								 class: "btn btn-small btn-danger"  %></td>
 						</tr>
@@ -166,24 +166,20 @@
 				<tr>
 					<th>Nombre</th>
 					<th>Apellidos</th>
-					<th>Dni</th>
+					<th>Puesto</th>
 					<th>Centro</th>
 				</tr>
 			</thead>
 			<tbody>
-				<% @empresa.responsables.each do |r| %>
+				<% @empresa.trabajadors.each do |t| %>
 					<tr>
-						<td><%= r.nombre %></td>
-						<td><%= r.apellidos %></td>
-						<td><%= r.cargo %></td>
-						<td><%= r.cargo %></td>
+						<td><%= t.nombre %></td>
+						<td><%= t.apellidos %></td>
+						<td><%= t.puesto %></td>
+						<td><%= t.centro.nombre %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
-		<div class="col-12 text-end">
-			<%= link_to 'Añadir Trabajador', new_empresa_responsable_path(@empresa),
-			 class: "btn btn-dark" %>
-		</div>
 	</div>
 </div>

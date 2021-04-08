@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @trabajador.nombre %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @trabajador.apellidos %>
+</p>
+
+<p>
+  <strong>Puesto:</strong>
+  <%= @trabajador.puesto %>
+</p>
+
+<p>
+  <strong>Embarazo:</strong>
+  <%= @trabajador.embarazo %>
+</p>
+
+<p>
+  <strong>Lactante:</strong>
+  <%= @trabajador.lactante %>
+</p>
+
+<p>
+  <strong>Sensible:</strong>
+  <%= @trabajador.sensible %>
+</p>
+
+<p>
+  <strong>Discapacidad:</strong>
+  <%= @trabajador.discapacidad %>
+</p>
+
+<p>
+  <strong>Menor:</strong>
+  <%= @trabajador.menor %>
+</p>
+
+<p>
+  <strong>Fecha alta:</strong>
+  <%= @trabajador.fecha_alta %>
+</p>
+
+<p>
+  <strong>Fecha baja:</strong>
+  <%= @trabajador.fecha_baja %>
+</p>
+
+<%= link_to 'Edit', edit_trabajador_path(@trabajador) %> |
+<%= link_to 'Back', trabajadors_path %>

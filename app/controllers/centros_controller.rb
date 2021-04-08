@@ -7,7 +7,6 @@ class CentrosController < ApplicationController
   end
 
   def show
-		@empresa = Empresa.find(params[:empresa_id])
 		@centro = Centro.find(params[:id])
   end
 

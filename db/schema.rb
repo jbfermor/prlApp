@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_095500) do
+ActiveRecord::Schema.define(version: 2021_04_08_172515) do
 
   create_table "centros", force: :cascade do |t|
     t.string "nombre"
@@ -88,6 +88,23 @@ ActiveRecord::Schema.define(version: 2021_03_28_095500) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "trabajadors", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellidos"
+    t.string "puesto"
+    t.integer "embarazo"
+    t.integer "lactante"
+    t.integer "sensible"
+    t.integer "discapacidad"
+    t.integer "menor"
+    t.integer "fecha_alta"
+    t.integer "fecha_baja"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "centro_id", null: false
+    t.index ["centro_id"], name: "index_trabajadors_on_centro_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nombre"
     t.string "apellidos"
@@ -107,5 +124,6 @@ ActiveRecord::Schema.define(version: 2021_03_28_095500) do
 
   add_foreign_key "centros", "empresas"
   add_foreign_key "responsables", "empresas"
+  add_foreign_key "trabajadors", "centros"
   add_foreign_key "users", "roles"
 end
