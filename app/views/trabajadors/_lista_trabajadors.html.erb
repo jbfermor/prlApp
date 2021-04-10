@@ -1,0 +1,32 @@
+<row>
+	<h2>Lista de trabajadores</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Puesto</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @centro.trabajadors.each do |t| %>
+				<tr>
+					<td><%= t.nombre %></td>
+					<td><%= t.apellidos %></td>
+					<td><%= t.puesto %></td>
+					<td><%= t.centro.nombre %></td>
+					<td><%= link_to 'Mostrar', trabajador_path(t),
+						class: "btn btn-small btn-info" %></td>
+					<td><%= link_to 'Editar', edit_trabajador_path(t),
+						class: "btn btn-small btn-warning" %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class="row">
+		<%= link_to "Dar de alta nuevo trabajador",
+		 new_centro_trabajador_path(@centro),
+		 class: "btn btn-success text-white"%>
+	</div>
+</row>

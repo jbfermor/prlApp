@@ -160,7 +160,7 @@
 
 <div class="row">
 	<div class="collapse multi-collapse" id="trabajadores">
-		<h2>Trabajadores</h2>
+		<h2>Trabajadores activos</h2>
 		<table>
 			<thead>
 				<tr>
@@ -168,18 +168,66 @@
 					<th>Apellidos</th>
 					<th>Puesto</th>
 					<th>Centro</th>
+					<th colspan="4">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
-				<% @empresa.trabajadors.each do |t| %>
+				<% @t_activos.each do |t| %>
 					<tr>
 						<td><%= t.nombre %></td>
 						<td><%= t.apellidos %></td>
 						<td><%= t.puesto %></td>
-						<td><%= t.centro.nombre %></td>
+						<td><%= link_to "#{t.centro.nombre}", centro_path(t.centro) %></td>
+						<td><%= link_to 'Mostrar', trabajador_path(t),
+							class: "btn btn-small btn-info" %></td>
+						<td><%= link_to 'Editar', edit_trabajador_path(t),
+							class: "btn btn-small btn-warning" %></td>
+						<td><%= link_to "Dar de baja", dar_baja_trabajador_path(t),
+							 class: "btn btn-secondary text-white" %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
+		<% if !@t_baja.empty? %>
+		<div class="row text-white">
+			<div class="d-flex justify-content-end">
+				<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+				 data-bs-target="#t_baja" aria-expanded="false"
+				 aria-controls="t_baja">Ver trabajadores inactivos</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="collapse" id="t_baja">
+				<h2>Trabajadores inactivos</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>Puesto</th>
+							<th>Centro</th>
+							<th colspan="3">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @t_baja.each do |tb| %>
+							<tr>
+								<td><%= tb.nombre %></td>
+								<td><%= tb.apellidos %></td>
+								<td><%= tb.puesto %></td>
+								<td><%= tb.centro.nombre %></td>
+								<td><%= link_to 'Mostrar', trabajador_path(tb),
+									class: "btn btn-small btn-info" %></td>
+								<td><%= link_to 'Editar', edit_trabajador_path(tb),
+									class: "btn btn-small btn-warning" %></td>
+								<td><%= link_to 'Dar de alta', dar_alta_trabajador_path(tb),
+									 class: "btn btn-small btn-secondary text-white"  %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<% end %>
 	</div>
 </div>

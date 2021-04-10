@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
 	root to: "empresas#index"
+
   resources :empresas, shallow: true do
 		resources :responsables
 		resources :centros do
-			resources :trabajadors
+			resources :trabajadors do
+				member do
+					get "dar_baja"
+					get "dar_alta"
+				end
+			end
 		end
   end
   devise_for :users

@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Nombre:</strong>
@@ -40,15 +39,31 @@
   <%= @trabajador.menor %>
 </p>
 
-<p>
-  <strong>Fecha alta:</strong>
-  <%= @trabajador.fecha_alta %>
-</p>
-
-<p>
-  <strong>Fecha baja:</strong>
-  <%= @trabajador.fecha_baja %>
-</p>
+<% if @trabajador.activo == 1 %>
+	<p>
+	  <strong>Fecha alta:</strong>
+	  <%= Time.at(@trabajador.fecha_alta).strftime("%d/%m/%Y") %>
+	</p>
+	<div class="row">
+		<%= link_to "Dar de baja", dar_baja_trabajador_path(@trabajador),
+		 class: "btn btn-warning text-white" %>
+	</div>
+<% else %>
+	<p>
+		<strong>Fecha alta:</strong>
+		<%= Time.at(@trabajador.fecha_alta).strftime("%d/%m/%Y") %>
+	</p>
+	<% if @trabajador.fecha_baja != nil %>
+		<p>
+	  	<strong>Fecha baja:</strong>
+			<%= Time.at(@trabajador.fecha_baja).strftime("%d/%m/%Y") %>
+		</p>
+		<div class="row">
+			<%= link_to "Dar de alta", dar_alta_trabajador_path(@trabajador),
+			 class: "btn btn-secondary text-white" %>
+		</div>
+	<% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_trabajador_path(@trabajador) %> |
-<%= link_to 'Back', trabajadors_path %>
+<%= link_to 'Back', centro_path(@centro) %>

@@ -9,6 +9,9 @@ class EmpresasController < ApplicationController
 
   # GET /empresas/1 or /empresas/1.json
   def show
+		empresa = Empresa.find(params[:id])
+		@t_activos = empresa.trabajadors.where(activo: 1)
+		@t_baja = empresa.trabajadors.where(activo: 0)
   end
 
   # GET /empresas/new
