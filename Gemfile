@@ -27,6 +27,8 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 gem 'pagy', '~> 4.2'
 
+gem 'material_icons', '~> 2.2', '>= 2.2.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

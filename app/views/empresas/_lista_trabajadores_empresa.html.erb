@@ -1,0 +1,70 @@
+<div class="row">
+	<div class="collapse multi-collapse" id="trabajadores">
+		<h2>Trabajadores activos</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Nombre y apellidos</th>
+					<th>Puesto</th>
+					<th>Centro</th>
+					<th colspan="4">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @t_activos.each do |t| %>
+					<tr>
+						<td><%= t.nombre + " " + t.apellidos %></td>
+						<td><%= t.puesto %></td>
+						<td><%= link_to "#{t.centro.nombre}", centro_path(t.centro) %></td>
+						<td><%= link_to mi.visibility.style("color: blue;"),
+							trabajador_path(t), :title =>"Mostrar" %></td>
+						<td><%= link_to mi.settings.style("color: rgb(255,165,0);"),
+							edit_trabajador_path(t), :title => "Editar" %></td>
+						<td><%= link_to mi.block.style("color: red;"),
+							 dar_baja_trabajador_path(t), :title => "Dar de baja" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<% if !@t_baja.empty? %>
+		<div class="row text-white">
+			<div class="d-flex justify-content-end">
+				<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+				 data-bs-target="#t_baja" aria-expanded="false"
+				 aria-controls="t_baja">Ver trabajadores inactivos</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="collapse" id="t_baja">
+				<h2>Trabajadores inactivos</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nombre y apellidos</th>
+							<th>Puesto</th>
+							<th>Centro</th>
+							<th colspan="3">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @t_baja.each do |tb| %>
+							<tr>
+								<td><%= tb.nombre + " " + tb.apellidos %></td>
+								<td><%= tb.puesto %></td>
+								<td><%= tb.centro.nombre %></td>
+								<td><%= link_to mi.visibility.style("color: blue;"),
+									trabajador_path(tb), :title => "Mostrar"  %></td>
+								<td><%= link_to mi.settings.style("color: rgb(255,165,0);"),
+							    edit_trabajador_path(tb), :title => "Editar"  %></td>
+								<td><%= link_to mi.redo.style("color: green;"),
+									dar_alta_trabajador_path(tb), :title => "Dar de alta"  %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<%== pagy_bootstrap_nav(@pagy_inactivo) %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
