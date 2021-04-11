@@ -31,9 +31,7 @@ class CentrosController < ApplicationController
   end
 
   def edit
-		@empresa = Empresa.find(params[:empresa_id])
 		@centro = Centro.find(params[:id])
-		@empresa = Empresa.find(params[:empresa_id])
 		@localizacion_select = ["Edificio de oficinas", "Local comercial",
 			"Nave industrial", "Edificio residencial"]
 		@entorno_select = ["Comercial (locales y actividades comerciales predominantes)",
@@ -69,10 +67,9 @@ class CentrosController < ApplicationController
   end
 
   def update
-		@empresa = Empresa.find(params[:empresa_id])
     respond_to do |format|
       if @centro.update(centro_params)
-        format.html { redirect_to empresa_path(@empresa),
+        format.html { redirect_to empresa_path(@centro.empresa_id),
 					notice: "Centro guardado correctamente" }
         format.json { render :show, status: :ok, location: @centro }
       else
@@ -83,10 +80,9 @@ class CentrosController < ApplicationController
   end
 
   def destroy
-		@empresa = Empresa.find(params[:empresa_id])
     @centro.destroy
     respond_to do |format|
-      format.html { redirect_to empresa_path(@empresa),
+      format.html { redirect_to empresa_path(@centro.empresa_id),
 				 notice: "Centro eliminado correctamente." }
       format.json { head :no_content }
     end
