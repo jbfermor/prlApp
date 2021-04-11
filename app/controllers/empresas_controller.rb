@@ -11,7 +11,7 @@ class EmpresasController < ApplicationController
   def show
 		empresa = Empresa.find(params[:id])
 		@t_activos = empresa.trabajadors.where(activo: 1)
-		@t_baja = empresa.trabajadors.where(activo: 0)
+		@pagy_inactivo, @t_baja = pagy(empresa.trabajadors.where(activo: 0))
   end
 
   # GET /empresas/new
