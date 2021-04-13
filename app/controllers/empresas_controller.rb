@@ -22,6 +22,7 @@ class EmpresasController < ApplicationController
 
   # GET /empresas/1/edit
   def edit
+		@t_fuera_select = {"SI":1, "NO":0}
   end
 
   # POST /empresas or /empresas.json

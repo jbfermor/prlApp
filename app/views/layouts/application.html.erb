@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
 		<% if user_signed_in? %>
 			<div class="row text-end">
 				<p>Sesión iniciada como <%= current_user.email %></p>
@@ -29,7 +30,7 @@
 			<% end %>
 		</div>
 
-		<div class="container">
+		<div class="container d-grid gap-3 mt-3">
 			<%= yield %>
 		</div>
 

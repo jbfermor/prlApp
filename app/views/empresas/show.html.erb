@@ -6,63 +6,63 @@
 	</div>
 <% end %>
 
+<% if @empresa.centros.empty? %>
+	<div class="row">
+		<div class="alert alert-danger text-center">
+			No hay creado ningún centro
+		</div>
+	</div>
+<% end %>
+
 <div class="row">
-	<p>
-	  <strong>Razon social:</strong>
-	  <%= @empresa.razon_social %>
-	</p>
-
-	<p>
-	  <strong>Cif:</strong>
-	  <%= @empresa.cif %>
-	</p>
-
-	<p>
-	  <strong>Direccion:</strong>
-	  <%= @empresa.direccion %>
-	</p>
-
-	<p>
-	  <strong>Poblacion:</strong>
-	  <%= @empresa.poblacion %>
-	</p>
-
-	<p>
-	  <strong>Provincia:</strong>
-	  <%= @empresa.provincia %>
-	</p>
-
-	<p>
-	  <strong>Cp:</strong>
-	  <%= @empresa.cp %>
-	</p>
-
-	<p>
-	  <strong>Telefono:</strong>
-	  <%= @empresa.telefono %>
-	</p>
-
-	<p>
-	  <strong>Email:</strong>
-	  <%= @empresa.email %>
-	</p>
-
-	<p>
-	  <strong>T fuera:</strong>
-		<% if @empresa.t_fuera == 0 %>
-	  	No
-		<% else %>
-			Sí
-		<% end %>
-	</p>
+	<h1><%= @empresa.razon_social %></h1>
 </div>
 
 <div class="row">
-	<%= link_to 'Edit', edit_empresa_path(@empresa) %>
-	<%= link_to 'Back', empresas_path %>
+	<%= link_to 'Editar', edit_empresa_path(@empresa),
+	class: "btn btn-warning" %>
 </div>
 
-<div class="row bg-light rounded p-3 text-white">
+<div class="row">
+	<table id="showEmpresa" class="shadow">
+		<tr>
+			<th><strong>Cif:</strong></th>
+			<td colspan="7"><%= @empresa.cif %></td>
+		</tr>
+		<tr>
+			<th><strong>Direccion:</strong></th>
+			<td colspan="7"><%= @empresa.direccion %></td>
+		</tr>
+		<tr>
+			<th><strong>Poblacion:</strong></th>
+			<td colspan="7"><%= @empresa.poblacion %></td>
+		</tr>
+		<tr>
+			<th><strong>Provincia:</strong></th>
+			<td colspan="5"><%= @empresa.provincia %></td>
+			<th><strong>Cp:</strong></th>
+			<td><%= @empresa.cp %></td>
+		</tr>
+		<tr>
+			<th><strong>Telefono:</strong></th>
+			<td><%= @empresa.telefono %></td>
+			<th><strong>Email:</strong></th>
+			<td colspan="5"><%= @empresa.email %></td>
+		</tr>
+		<tr>
+			<th colspan="7">¿Tiene trabajadores fuera?</th>
+			<td>
+				<% if @empresa.t_fuera == 0 %>
+					No
+				<% else %>
+					Sí
+				<% end %>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="row bg-light rounded p-3 text-white shadow">
 	<div class="d-flex justify-content-evenly">
 		<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
 		 data-bs-target="#responsables" aria-expanded="false"
@@ -81,3 +81,8 @@
 <%= render "empresas/lista_centros_empresa" %>
 
 <%= render "empresas/lista_trabajadores_empresa" %>
+
+<div class="row">
+		<%= link_to 'Atrás', empresas_path,
+		class: "btn btn-danger"  %>
+</div>
