@@ -1,24 +1,23 @@
+<div class="row">
+	<h1>Responsable: </h1>
+	<h1><%= @responsable.nombre %> <%= @responsable.apellidos %></h1>
+	<table id="showResponsable">
+		<tr>
+			<th>Nif</th>
+			<td><%= @responsable.nif %></td>
+		</tr>
+		<tr>
+			<th>Cargo</th>
+			<td><%= @responsable.cargo %></td>
+		</tr>
+	</table>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @responsable.nombre %>
-</p>
-
-<p>
-  <strong>Apellidos:</strong>
-  <%= @responsable.apellidos %>
-</p>
-
-<p>
-  <strong>Nif:</strong>
-  <%= @responsable.nif %>
-</p>
-
-<p>
-  <strong>Cargo:</strong>
-  <%= @responsable.cargo %>
-</p>
-
-<%= link_to 'Editar', edit_responsable_path(@responsable) %>
-<%= link_to 'Atrás', empresa_path(@empresa),
-		class: "btn btn-danger text-white" %>
+<div class="row">
+	<%= link_to 'Editar', edit_responsable_path(@responsable),
+			class: "btn btn-warning" %>
+</div>
+<div class="row">
+	<%= link_to 'Atrás', empresa_path(@empresa),
+			class: "btn btn-danger" %>
+</div>

@@ -1,6 +1,6 @@
 <div class="row">
-	<%= form_with model: @trabajador, url: trabajador_path(@trabajador),
-	 method: :patch do |form| %>
+	<%= form_with model: @trabajador, url: centro_trabajadors_path,
+		method: :post do |form| %>
 	  <% if trabajador.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(trabajador.errors.count, "error") %> prohibited this trabajador from being saved:</h2>
@@ -12,12 +12,6 @@
 	      </ul>
 	    </div>
 	  <% end %>
-
-		<div class="field">
-	    <%= form.label "Centro", class: "form-label" %>
-	    <%= form.collection_select :centro_id, @centros, :id, :nombre,
-			{prompt: "Selecciona centro"}, {class: "form-select"} %>
-	  </div>
 
 	  <div class="field">
 	    <%= form.label :nombre, class: "form-label" %>

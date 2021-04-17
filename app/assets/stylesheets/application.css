@@ -38,6 +38,7 @@
  th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+	background-color: black;
 }
 
 thead,

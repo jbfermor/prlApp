@@ -1,5 +1,9 @@
-<h1>New Trabajador</h1>
+<div class="row">
+	<h1>Nuevo Trabajador</h1>
+</div>
 
-<%= render 'form', trabajador: @trabajador %>
+<%= render 'form_new', trabajador: @trabajador %>
 
-<%= link_to 'Atrás', centro_path(@centro) %>
+<div class="row">
+	<%= link_to 'Atrás', centro_path(@centro), class: "btn btn-success" %>
+</div>

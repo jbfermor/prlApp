@@ -1,7 +1,16 @@
-<h1>Editar Responsable</h1>
+<div class="row">
+	<h1>Editar Responsable</h1>
+</div>
+
 
 <%= render 'form_edit', responsable: @responsable %>
 
-<%= link_to 'Mostrar', responsable_path(@responsable) %> |
-<%= link_to 'Atrás', empresa_path(@empresa),
-		class: "btn btn-danger text-white" %>
+<div class="row">
+	<%= link_to 'Mostrar', responsable_path(@responsable),
+		class: "btn btn-warning" %>
+</div>
+
+<div class="row">
+	<%= link_to 'Atrás', empresa_path(@empresa),
+			class: "btn btn-danger" %>
+</div>

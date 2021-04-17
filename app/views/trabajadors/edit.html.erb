@@ -1,6 +1,13 @@
-<h1>Editing Trabajador</h1>
+<div class="row">
+	<h1>Editando trabajador:</h1>
+	<h2><%=@trabajador.nombre %> <%=@trabajador.apellidos %></h2>
+</div>
 
 <%= render 'form_edit', trabajador: @trabajador %>
 
-<%= link_to 'Show', @trabajador %> |
-<%= link_to 'Back', centro_path(@centro) %>
+<div class="row">
+	<%= link_to 'Mostrar', @trabajador, class: "btn btn-warning" %>
+</div>
+<div class="row">
+	<%= link_to 'Atrás', centro_path(@centro), class: "btn btn-danger" %>
+</div>
