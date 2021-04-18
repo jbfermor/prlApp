@@ -1,11 +1,11 @@
 <div class="row">
-	<h1>Editando <%= @user.mail %></h1>
+	<h1>Editando <%= @user.email %></h1>
 </div>
 
 <%= render 'form', user: @user %>
 
 <div class="row">
-	<%= link_to 'Mostrar', @user, class: "btn btn-warning" %> |
+	<%= link_to 'Mostrar', @user, class: "btn btn-warning" %> 
 </div>
 <div class="row">
 	<%= link_to 'Atrás', users_path, class: "btn btn-danger" %>

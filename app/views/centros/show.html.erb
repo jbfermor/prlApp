@@ -1,195 +1,235 @@
+<div class="row">
+		<h1><%= @centro.nombre %></h1>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @centro.nombre %>
-</p>
+<div class="row">
+	<%= link_to 'Editar', edit_centro_path(@centro), class: "btn btn-warning" %>
+</div>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @centro.direccion %>
-</p>
+<div class="row">
+	<div class="accordion" id="accordionCentro">
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingDatosGenerales">
+	      <button class="accordion-button collapsed" type="button"
+				 data-bs-toggle="collapse" data-bs-target="#collapseDatosGenerales"
+				 aria-expanded="false" aria-controls="collapseDatosGenerales">
+	        Datos generales
+	      </button>
+	    </h2>
+	    <div id="collapseDatosGenerales" class="accordion-collapse collapse"
+			 aria-labelledby="headingDatosGenerales" data-bs-parent="#accordionCentro">
+	      <div class="accordion-body">
+					<table>
+						<tr>
+							<th colspan="2">Dirección</th>
+							<td colspan="10"><%= @centro.direccion %></td>
+						</tr>
+						<tr>
+							<th colspan="2">Población</th>
+							<td colspan="10"><%= @centro.poblacion %></td>
+						</tr>
+						<tr>
+							<th colspan="2">Provincia</th>
+							<td colspan="4"><%= @centro.provincia %></td>
+							<th colspan="2">Cp</th>
+							<td colspan="4"><%= @centro.cp %></td>
+						</tr>
+						<tr>
+							<th colspan="2">Actividad</th>
+							<td colspan="10"><%= @centro.actividad %></td>
+						</tr>
+						<tr>
+							<th colspan="2">Localización</th>
+							<td colspan="10"><%= @centro.localizacion %></td>
+						</tr>
+						<tr>
+							<th colspan="4">N. Trabajadores Activos</th>
+							<td colspan="2"><%= @centro.n_trabajadores %></td>
+							<th colspan="4">Superficie</th>
+							<td colspan="2"><%= @centro.superficie %></td>
+						</tr>
+						<tr>
+							<th colspan="4">N. Plantas</th>
+							<td colspan="2"><%= @centro.plantas_ocupadas %></td>
+							<th colspan="4">Aforo máx.</th>
+							<td colspan="2"><%= @centro.aforo_max %></td>
+						</tr>
+					</table>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingEntorno">
+	      <button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#collapseEntorno"
+				aria-expanded="false" aria-controls="collapseEntorno">
+	        Entorno de la empresa
+	      </button>
+	    </h2>
+	    <div id="collapseEntorno" class="accordion-collapse collapse"
+			aria-labelledby="headingEntorno" data-bs-parent="#accordionCentro">
+	      <div class="accordion-body">
+	        <table>
+						<tr>
+							<th colspan="2">Entorno</th>
+							<td colspan="10"><%= @centro.entorno %></td>
+						</tr>
+						<tr>
+							<th colspan="4">Act. derecha</th>
+							<td colspan="2"><%= @centro.act_derecha %></td>
+							<th colspan="4">Act. izquierda</th>
+							<td colspan="2"><%= @centro.act_izquierda %></td>
+						</tr>
+						<tr>
+							<th colspan="4">Act. frontal</th>
+							<td colspan="2"><%= @centro.act_frontal %></td>
+							<th colspan="4">Act. trasera</th>
+							<td colspan="2"><%= @centro.act_trasera %></td>
+						</tr>
+						<tr>
+							<th colspan="4">Act. superior</th>
+							<td colspan="2"><%= @centro.act_superior %></td>
+							<th colspan="4">Act. inferior</th>
+							<td colspan="2"><%= @centro.act_inferior %></td>
+						</tr>
+						<tr>
+	        </table>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingAccesos">
+	      <button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#collapseAccesos"
+				aria-expanded="false" aria-controls="collapseAccesos">
+	        Accesos
+	      </button>
+	    </h2>
+	    <div id="collapseAccesos" class="accordion-collapse collapse"
+			aria-labelledby="headingAccesos" data-bs-parent="#accordionCentro">
+	      <div class="accordion-body">
+	        <table>
+						<tr>
+							<th colspan="2">Acceso empleados</th>
+							<td colspan="10"><%= @centro.acceso_empleados %></td>
+						</tr>
+						<tr>
+							<th colspan="2">Accesso clientes</th>
+							<td colspan="10"><%= @centro.accesso_clientes %></td>
+						</tr>
+	        </table>
+	      </div>
+	    </div>
+	  </div>
+		<div class="accordion-item">
+	    <h2 class="accordion-header" id="headingInstalaciones">
+	      <button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#collapseInstalaciones"
+				 aria-expanded="false" aria-controls="collapseInstalaciones">
+	        Instalaciones
+	      </button>
+	    </h2>
+	    <div id="collapseInstalaciones" class="accordion-collapse collapse"
+			 aria-labelledby="headingInstalaciones" data-bs-parent="#accordionCentro">
+	      <div class="accordion-body">
+	        <table>
+						<tr>
+							<th colspan="12">Eléctricas</th>
+						</tr>
+						<tr>
+							<th colspan="10">¿Tiene instalación eléctrica de baja tensión?</th>
+							<td colspan="2"><%= @centro.inst_baja_tension %></td>
+						</tr>
+						<tr>
+							<th colspan="6">El cuadro general de protección se ubica en: </th>
+							<td colspan="6"><%= @centro.ubicacion_cuadro_general %></td>
+						</tr>
+						<tr>
+							<th colspan="10">¿Tiene centro de transormación (ct) perteneciente
+								al centro de trabajo?</th>
+							<td colspan="2"><%= @centro.es_ct %></td>
+						</tr>
+						<tr>
+							<th colspan="10">En caso afirmativo, ¿está el ct ubicado
+								en el interior de la edificación?</th>
+							<td colspan="2"><%= @centro.ub_interior_ct %></td>
+						</tr>
+						<tr>
+							<th colspan="10">¿Está el ct ubicado en el exterior
+								de una caseta independiente?</th>
+							<td colspan="2"><%= @centro.ub_caseta_ext_ct %></td>
+						</tr>
+						<tr>
+							<th colspan="2">Potencia del CT</th>
+							<td colspan="1"><%= @centro.potencia_ct %></td>
+							<th colspan="3">Empresa mantenedora</th>
+							<td colspan="6"><%= @centro.e_mant_ct %></td>
+						</tr>
+						<tr>
+							<th colspan="12">Calefacción / Aire acondicionado</th>
+						</tr>
+						<tr>
+							<th colspan="10">¿Tiene instalación de calefacción/
+								acondicionamiento de aire?</th>
+							<td colspan="2"><%= @centro.es_aacc %></td>
+						</tr>
+						<tr>
+							<th colspan="10">¿Qué tipo de calefacción/
+								acondicionamiento de aire?</th>
+							<td colspan="2"><%= @centro.sit_aacc %></td>
+						</tr>
+						<tr>
+							<th colspan="12">Ventilación</th>
+						</tr>
+						<tr>
+							<th colspan="10">¿Tiene sistemas de ventilación?</th>
+							<td colspan="2"><%= @centro.es_ventilacion %></td>
+						</tr>
+						<tr>
+							<th colspan="6">¿Qué tipo de sistema de ventilación posee?</th>
+							<td colspan="6"><%= @centro.sit_ventilacion %></td>
+						</tr>
+						<tr>
+							<th colspan="12">Ascensores / Montagargas</th>
+						</tr>
+						<tr>
+							<th colspan="5">¿Tiene ascensores / montagargas?</th>
+							<td colspan="1"><%= @centro.es_ascensor %></td>
+							<th colspan="5">N. ascensores</th>
+							<td colspan="1"><%= @centro.n_ascensores %></td>
+						</tr>
+						<tr>
+							<th colspan="12">Sistemas de frío</th>
+						</tr>
+						<tr>
+							<th colspan="3">¿Tiene sistemas de frío?</th>
+							<td colspan="1"><%= @centro.es_frio %></td>
+							<th colspan="3">N. cámaras de frío</th>
+							<td colspan="1"><%= @centro.n_cam_frio %></td>
+							<th colspan="3">N. cámaras de congelados</th>
+							<td colspan="1"><%= @centro.n_cam_congelados %></td>
+						</tr>
+						<tr>
+							<th colspan="6">Ubicación de los compresores</th>
+							<td colspan="6"><%= @centro.ub_compresores %></td>
+						</tr>
+						<tr>
+							<th colspan="12">Otras instalaciones</th>
+						</tr>
+						<tr>
+							<td colspan="12"><%= @centro.otras_inst %></td>
+						</tr>
+					</table>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
-<p>
-  <strong>Poblacion:</strong>
-  <%= @centro.poblacion %>
-</p>
+<div class="row my-3 d-flex mx-auto">
+	<%= render "trabajadors/lista_trabajadors" %>
+</div>
 
-<p>
-  <strong>Provincia:</strong>
-  <%= @centro.provincia %>
-</p>
 
-<p>
-  <strong>Cp:</strong>
-  <%= @centro.cp %>
-</p>
-
-<p>
-  <strong>Actividad:</strong>
-  <%= @centro.actividad %>
-</p>
-
-<p>
-  <strong>N trabajadores:</strong>
-  <%= @centro.n_trabajadores %>
-</p>
-
-<p>
-  <strong>Localizacion:</strong>
-  <%= @centro.localizacion %>
-</p>
-
-<p>
-  <strong>Superficie:</strong>
-  <%= @centro.superficie %>
-</p>
-
-<p>
-  <strong>Plantas ocupadas:</strong>
-  <%= @centro.plantas_ocupadas %>
-</p>
-
-<p>
-  <strong>Aforo max:</strong>
-  <%= @centro.aforo_max %>
-</p>
-
-<p>
-  <strong>Entorno:</strong>
-  <%= @centro.entorno %>
-</p>
-
-<p>
-  <strong>Act derecha:</strong>
-  <%= @centro.act_derecha %>
-</p>
-
-<p>
-  <strong>Act izquierda:</strong>
-  <%= @centro.act_izquierda %>
-</p>
-
-<p>
-  <strong>Act frontal:</strong>
-  <%= @centro.act_frontal %>
-</p>
-
-<p>
-  <strong>Act trasera:</strong>
-  <%= @centro.act_trasera %>
-</p>
-
-<p>
-  <strong>Act superior:</strong>
-  <%= @centro.act_superior %>
-</p>
-
-<p>
-  <strong>Act inferior:</strong>
-  <%= @centro.act_inferior %>
-</p>
-
-<p>
-  <strong>Acceso empleados:</strong>
-  <%= @centro.acceso_empleados %>
-</p>
-
-<p>
-  <strong>Accesso clientes:</strong>
-  <%= @centro.accesso_clientes %>
-</p>
-
-<p>
-  <strong>Inst baja tension:</strong>
-  <%= @centro.inst_baja_tension %>
-</p>
-
-<p>
-  <strong>Ubicacion cuadro general:</strong>
-  <%= @centro.ubicacion_cuadro_general %>
-</p>
-
-<p>
-  <strong>Es ct:</strong>
-  <%= @centro.es_ct %>
-</p>
-
-<p>
-  <strong>Ub interior ct:</strong>
-  <%= @centro.ub_interior_ct %>
-</p>
-
-<p>
-  <strong>Ub caseta ext ct:</strong>
-  <%= @centro.ub_caseta_ext_ct %>
-</p>
-
-<p>
-  <strong>Potencia ct:</strong>
-  <%= @centro.potencia_ct %>
-</p>
-
-<p>
-  <strong>E mant ct:</strong>
-  <%= @centro.e_mant_ct %>
-</p>
-
-<p>
-  <strong>Es aacc:</strong>
-  <%= @centro.es_aacc %>
-</p>
-
-<p>
-  <strong>Sit aacc:</strong>
-  <%= @centro.sit_aacc %>
-</p>
-
-<p>
-  <strong>Es ventilacion:</strong>
-  <%= @centro.es_ventilacion %>
-</p>
-
-<p>
-  <strong>Sit ventilacion:</strong>
-  <%= @centro.sit_ventilacion %>
-</p>
-
-<p>
-  <strong>Es ascensor:</strong>
-  <%= @centro.es_ascensor %>
-</p>
-
-<p>
-  <strong>N ascensores:</strong>
-  <%= @centro.n_ascensores %>
-</p>
-
-<p>
-  <strong>Es frio:</strong>
-  <%= @centro.es_frio %>
-</p>
-
-<p>
-  <strong>N cam congelados:</strong>
-  <%= @centro.n_cam_congelados %>
-</p>
-
-<p>
-  <strong>N cam frio:</strong>
-  <%= @centro.n_cam_frio %>
-</p>
-
-<p>
-  <strong>Ub compresores:</strong>
-  <%= @centro.ub_compresores %>
-</p>
-
-<p>
-  <strong>Otras inst:</strong>
-  <%= @centro.otras_inst %>
-</p>
-
-<%= link_to 'Editar', edit_centro_path(@centro) %> |
-<%= link_to 'Atrás', empresa_path(@centro.empresa) %>
-
-<%= render "trabajadors/lista_trabajadors" %>
+<div class="row">
+	<%= link_to 'Atrás', empresa_path(@centro.empresa), class: "btn btn-danger" %>
+</div>
