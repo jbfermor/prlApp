@@ -5,23 +5,22 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Nombre</th>
-				<th>Apellidos</th>
+				<th>Nombre y apellidos</th>
 				<th>Puesto</th>
+				<th>Centro</th>
 				<th colspan="2">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @centro.trabajadors.each do |t| %>
 				<tr>
-					<td><%= t.nombre %></td>
-					<td><%= t.apellidos %></td>
+					<td><%= t.nombre %> <%= t.apellidos %></td>
 					<td><%= t.puesto %></td>
 					<td><%= t.centro.nombre %></td>
-					<td><%= link_to 'Mostrar', trabajador_path(t),
-						class: "btn btn-small btn-info" %></td>
-					<td><%= link_to 'Editar', edit_trabajador_path(t),
-						class: "btn btn-small btn-warning" %></td>
+					<td><%= link_to mi.visibility.style("color: blue"), trabajador_path(t),
+					  title: "Mostrar" %></td>
+					<td><%= link_to mi.settings.style("color: rgb(255,165,0);"),
+					  edit_trabajador_path(t), title: "Editar" %></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -29,5 +28,8 @@
 </div>
 <div class="row">
 	<%= link_to "Dar de alta nuevo trabajador",
-	 new_centro_trabajador_path(@centro),	class: "btn btn-success text-white"%>
+	 new_centro_trabajador_path(@centro),	class: "btn btn-success" %>
+</div>
+<div class="row">
+	<%= link_to "Atrás", empresa_path(@centro.empresa_id), class: "btn btn-danger" %>
 </div>

@@ -1,100 +1,36 @@
+<div class="row">
+	<h1>Centros de <%= @empresa.razon_social %></h1>
+</div>
 
-<h1>Centros</h1>
+<div class="row">
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Nombre</th>
+	      <th>Poblacion</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Direccion</th>
-      <th>Poblacion</th>
-      <th>Provincia</th>
-      <th>Cp</th>
-      <th>Actividad</th>
-      <th>N trabajadores</th>
-      <th>Localizacion</th>
-      <th>Superficie</th>
-      <th>Plantas ocupadas</th>
-      <th>Aforo max</th>
-      <th>Entorno</th>
-      <th>Act derecha</th>
-      <th>Act izquierda</th>
-      <th>Act frontal</th>
-      <th>Act trasera</th>
-      <th>Act superior</th>
-      <th>Act inferior</th>
-      <th>Acceso empleados</th>
-      <th>Accesso clientes</th>
-      <th>Inst baja tension</th>
-      <th>Ubicacion cuadro general</th>
-      <th>Es ct</th>
-      <th>Ub interior ct</th>
-      <th>Ub caseta ext ct</th>
-      <th>Potencia ct</th>
-      <th>E mant ct</th>
-      <th>Es aacc</th>
-      <th>Sit aacc</th>
-      <th>Es ventilacion</th>
-      <th>Sit ventilacion</th>
-      <th>Es ascensor</th>
-      <th>N ascensores</th>
-      <th>Es frio</th>
-      <th>N cam congelados</th>
-      <th>N cam frio</th>
-      <th>Ub compresores</th>
-      <th>Otras inst</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	  <tbody>
+	    <% @centros.each do |centro| %>
+	      <tr>
+	        <td><%= centro.nombre %></td>
+	        <td><%= centro.poblacion %></td>
+	        <td><%= link_to mi.visibility.style("color: blue"), centro,
+					  title: "Mostrar" %></td>
+	        <td><%= link_to mi.settings.style("color: rgb(255,165,0);") ,
+					  edit_centro_path(centro), title: "Editar" %></td>
+	        <td><%= link_to mi.delete.style("color: red"), centro,
+					  method: :delete, data: { confirm: '¿Seguro?' },
+						title: "Eliminar" %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
 
-  <tbody>
-    <% @centros.each do |centro| %>
-      <tr>
-        <td><%= centro.nombre %></td>
-        <td><%= centro.direccion %></td>
-        <td><%= centro.poblacion %></td>
-        <td><%= centro.provincia %></td>
-        <td><%= centro.cp %></td>
-        <td><%= centro.actividad %></td>
-        <td><%= centro.n_trabajadores %></td>
-        <td><%= centro.localizacion %></td>
-        <td><%= centro.superficie %></td>
-        <td><%= centro.plantas_ocupadas %></td>
-        <td><%= centro.aforo_max %></td>
-        <td><%= centro.entorno %></td>
-        <td><%= centro.act_derecha %></td>
-        <td><%= centro.act_izquierda %></td>
-        <td><%= centro.act_frontal %></td>
-        <td><%= centro.act_trasera %></td>
-        <td><%= centro.act_superior %></td>
-        <td><%= centro.act_inferior %></td>
-        <td><%= centro.acceso_empleados %></td>
-        <td><%= centro.accesso_clientes %></td>
-        <td><%= centro.inst_baja_tension %></td>
-        <td><%= centro.ubicacion_cuadro_general %></td>
-        <td><%= centro.es_ct %></td>
-        <td><%= centro.ub_interior_ct %></td>
-        <td><%= centro.ub_caseta_ext_ct %></td>
-        <td><%= centro.potencia_ct %></td>
-        <td><%= centro.e_mant_ct %></td>
-        <td><%= centro.es_aacc %></td>
-        <td><%= centro.sit_aacc %></td>
-        <td><%= centro.es_ventilacion %></td>
-        <td><%= centro.sit_ventilacion %></td>
-        <td><%= centro.es_ascensor %></td>
-        <td><%= centro.n_ascensores %></td>
-        <td><%= centro.es_frio %></td>
-        <td><%= centro.n_cam_congelados %></td>
-        <td><%= centro.n_cam_frio %></td>
-        <td><%= centro.ub_compresores %></td>
-        <td><%= centro.otras_inst %></td>
-        <td><%= link_to 'Show', centro %></td>
-        <td><%= link_to 'Edit', edit_centro_path(centro) %></td>
-        <td><%= link_to 'Destroy', centro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to 'New Centro', new_centro_path %>
+<div class="row">
+	<%= link_to "Volver a #{@empresa.razon_social}", @empresa, class: "btn btn-danger" %>
+</div>

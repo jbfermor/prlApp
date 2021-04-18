@@ -1,33 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<h1>Usuarios</h1>
+</div>
+<div class="row">
+	<table>
+	  <thead>
+	    <tr>
+				<th>Usuario</th>
+	      <th>Nombre</th>
+	      <th>Apellidos</th>
+	      <th>Telefono</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
 
-<h1>Users</h1>
+	  <tbody>
+	    <% @users.each do |user| %>
+	      <tr>
+					<td><%= user.email %></td>
+	        <td><%= user.nombre %></td>
+	        <td><%= user.apellidos %></td>
+	        <td><%= user.telefono %></td>
+	        <td><%= link_to mi.visibility.style("color: blue;"), user,
+						:title =>"Mostrar" %></td>
+	        <td><%= link_to mi.visibility.style("color: rgb(255,165,0);"),
+					  edit_user_path(user), :title =>"Editar" %></td>
+	        <td><%= link_to mi.visibility.style("color: red"), user,
+						method: :delete,v data: { confirm: '¿Seguro?' },
+					  :title =>"Eliminar" %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+</div>
 
-<table>
-  <thead>
-    <tr>
-			<th>Usuario</th>
-      <th>Nombre</th>
-      <th>Apellidos</th>
-      <th>Telefono</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-				<td><%= user.email %></td>
-        <td><%= user.nombre %></td>
-        <td><%= user.apellidos %></td>
-        <td><%= user.telefono %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<div class="row">
+	<%= link_to 'New User', new_user_path, class: "btn btn-success" %>
+</div>

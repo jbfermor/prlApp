@@ -38,16 +38,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :actividad, class: "form-label" %>
-    <%= form.text_field :actividad, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Número de trabajadores", class: "form-label" %>
-    <%= form.number_field :n_trabajadores, class: "form-control" %>
-  </div>
-
-  <div class="field">
     <%= form.label "Localización", class: "form-label" %>
 		<%= form.select :localizacion, options_for_select(@localizacion_select),
 		{:prompt => "Selecciona..."},

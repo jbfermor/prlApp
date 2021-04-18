@@ -3,7 +3,8 @@ class CentrosController < ApplicationController
   before_action :set_centro, only: %i[ show edit update destroy ]
 
   def index
-    @centros = Centro.all
+		@empresa = Empresa.find(params[:empresa_id])
+    @centros = @empresa.centros
   end
 
   def show
@@ -53,6 +54,7 @@ class CentrosController < ApplicationController
 		@empresa = Empresa.find(params[:empresa_id])
     @centro = Centro.new(centro_params)
 		@centro.empresa_id = @empresa.id
+		@centro.n_trabajadors = @centro.trabajadors.count
 
     respond_to do |format|
       if @centro.save
