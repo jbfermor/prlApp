@@ -125,3 +125,10 @@ div.actions {
 
 label {
   display: block; }
+
+a {
+	color: white; }
+
+a:hover {
+	color: white;
+  background-color: #000; }

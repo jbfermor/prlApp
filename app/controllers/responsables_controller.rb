@@ -4,7 +4,8 @@ class ResponsablesController < ApplicationController
 
   # GET /responsables or /responsables.json
   def index
-    @responsables = Responsable.all
+		@empresa = Empresa.find(params[:empresa_id])
+    @responsables = @empresa.responsables
   end
 
   # GET /responsables/1 or /responsables/1.json

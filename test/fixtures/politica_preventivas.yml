@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pp1: 1
+  pp2: 1
+  pp3: 1
+  pp4: 1
+  pp5: 1
+  pp6: 1
+  pp7: 1
+  pp8: 1
+  pp9: 1
+  pp10: 1
+  pp11: 1
+  pp12: MyString
+
+two:
+  pp1: 1
+  pp2: 1
+  pp3: 1
+  pp4: 1
+  pp5: 1
+  pp6: 1
+  pp7: 1
+  pp8: 1
+  pp9: 1
+  pp10: 1
+  pp11: 1
+  pp12: MyString

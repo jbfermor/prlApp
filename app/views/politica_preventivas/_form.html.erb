@@ -1,0 +1,77 @@
+<%= form_with(model: politica_preventiva) do |form| %>
+  <% if politica_preventiva.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(politica_preventiva.errors.count, "error") %> prohibited this politica_preventiva from being saved:</h2>
+
+      <ul>
+        <% politica_preventiva.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pp1 %>
+    <%= form.number_field :pp1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp2 %>
+    <%= form.number_field :pp2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp3 %>
+    <%= form.number_field :pp3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp4 %>
+    <%= form.number_field :pp4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp5 %>
+    <%= form.number_field :pp5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp6 %>
+    <%= form.number_field :pp6 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp7 %>
+    <%= form.number_field :pp7 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp8 %>
+    <%= form.number_field :pp8 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp9 %>
+    <%= form.number_field :pp9 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp10 %>
+    <%= form.number_field :pp10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp11 %>
+    <%= form.number_field :pp11 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pp12 %>
+    <%= form.text_field :pp12 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -62,25 +62,24 @@
 	</table>
 </div>
 
-<div class="row bg-light rounded p-3 text-white shadow">
-	<div class="d-flex justify-content-evenly">
-		<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-		 data-bs-target="#responsables" aria-expanded="false"
-		 aria-controls="responsables">Responsables</button>
-		 <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-	 	 data-bs-target="#centros" aria-expanded="false"
-	 	 aria-controls="centros">Centros</button>
-		 <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-	 	 data-bs-target="#trabajadores" aria-expanded="false"
-	 	 aria-controls="trabajadores">Trabajadores</button>
-	</div>
+<div class="row bg-light rounded shadow">
+		<div class="accordion" id="accordionEmpresa">
+			<%= render "empresas/lista_responsable_empresa" %>
+			<%= render "empresas/lista_centros_empresa" %>
+			<%= render "empresas/lista_trabajadores_empresa" %>
+		</div>
 </div>
 
-<%= render "empresas/lista_responsable_empresa" %>
-
-<%= render "empresas/lista_centros_empresa" %>
-
-<%= render "empresas/lista_trabajadores_empresa" %>
+<div class="row bg-light rounded shadow">
+		<div class="accordion" id="accordionEmpresaDos">
+			<%= render "empresas/politica_prevencion" %>
+			<%= render "empresas/organizacion_empresarial" %>
+			<%= render "empresas/organizacion_preventiva" %>
+			<%= render "empresas/practicas" %>
+			<%= render "empresas/medidas" %>
+			<%= render "empresas/presupuesto" %>
+		</div>
+</div>
 
 <div class="row">
 		<%= link_to 'Atrás', empresas_path,

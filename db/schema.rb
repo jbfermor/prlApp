@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_144624) do
+ActiveRecord::Schema.define(version: 2021_04_19_180155) do
 
   create_table "centros", force: :cascade do |t|
     t.string "nombre"
@@ -71,6 +71,25 @@ ActiveRecord::Schema.define(version: 2021_04_10_144624) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "politica_preventivas", force: :cascade do |t|
+    t.integer "pp1"
+    t.integer "pp2"
+    t.integer "pp3"
+    t.integer "pp4"
+    t.integer "pp5"
+    t.integer "pp6"
+    t.integer "pp7"
+    t.integer "pp8"
+    t.integer "pp9"
+    t.integer "pp10"
+    t.integer "pp11"
+    t.string "pp12"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "empresa_id", null: false
+    t.index ["empresa_id"], name: "index_politica_preventivas_on_empresa_id"
+  end
+
   create_table "responsables", force: :cascade do |t|
     t.string "nombre"
     t.string "apellidos"
@@ -124,6 +143,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_144624) do
   end
 
   add_foreign_key "centros", "empresas"
+  add_foreign_key "politica_preventivas", "empresas"
   add_foreign_key "responsables", "empresas"
   add_foreign_key "trabajadors", "centros"
   add_foreign_key "users", "roles"
