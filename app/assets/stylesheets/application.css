@@ -87,10 +87,6 @@ a {
   color: white;
  }
 
-a:hover {
-  color: red;
-}
-
 div.field,
 div.actions {
   margin-bottom: 10px; }
@@ -128,7 +124,3 @@ label {
 
 a {
 	color: white; }
-
-a:hover {
-	color: white;
-  background-color: #000; }
