@@ -22,8 +22,8 @@ class PoliticaPreventivasController < ApplicationController
 
   # GET /politica_preventivas/1/edit
   def edit
-		@politica_preventiva = PoliticaPreventiva.find(params[:id])
-		@empresa = @politica_preventiva.empresa
+		@empresa = Empresa.find(params[:id])
+		@politica_preventiva = @empresa.politica_preventiva
   end
 
   # POST /politica_preventivas or /politica_preventivas.json
@@ -45,9 +45,10 @@ class PoliticaPreventivasController < ApplicationController
 
   # PATCH/PUT /politica_preventivas/1 or /politica_preventivas/1.json
   def update
+		@empresa = Empresa.find(@politica_preventiva.empresa_id)
     respond_to do |format|
       if @politica_preventiva.update(politica_preventiva_params)
-        format.html { redirect_to @politica_preventiva, notice: "Politica preventiva was successfully updated." }
+        format.html { redirect_to @empresa, notice: "Politica preventiva was successfully updated." }
         format.json { render :show, status: :ok, location: @politica_preventiva }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -73,6 +74,6 @@ class PoliticaPreventivasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def politica_preventiva_params
-      params.require(:politica_preventiva).permit(:pp1, :pp2, :pp3, :pp4, :pp5, :pp6, :pp7, :pp8, :pp9, :pp10, :pp11, :pp12)
+      params.require(:politica_preventiva).permit(:pp1, :pp2, :pp3, :pp4, :pp5, :pp6, :pp7, :pp8, :pp9, :pp10, :pp11, :pp12, :empresa_id)
     end
 end

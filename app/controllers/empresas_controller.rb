@@ -12,6 +12,7 @@ class EmpresasController < ApplicationController
 		empresa = Empresa.find(params[:id])
 		@t_activos = empresa.trabajadors.where(activo: 1)
 		@pagy_inactivo, @t_baja = pagy(empresa.trabajadors.where(activo: 0))
+		@politica_preventiva = empresa.politica_preventiva
   end
 
   # GET /empresas/new
@@ -28,6 +29,9 @@ class EmpresasController < ApplicationController
   # POST /empresas or /empresas.json
   def create
     @empresa = Empresa.new(empresa_params)
+		politica_preventiva = PoliticaPreventiva.new
+		politica_preventiva.empresa_id = @empresa
+		@empresa.politica_preventiva = politica_preventiva
 
     respond_to do |format|
       if @empresa.save
