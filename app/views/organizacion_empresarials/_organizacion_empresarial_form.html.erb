@@ -1,0 +1,33 @@
+<% if !@empresa.organizacion_empresarial%>
+<div class="row">
+	<%= link_to "Asignar Organización Empresarial",
+	 new_empresa_organizacion_empresarial_path(@empresa),
+	 class: "btn btn-success" %>
+</div>
+<% else %>
+	<%= form_with model: @organizacion_empresarial,
+	 url: organizacion_empresarial_path(@organizacion_empresarial),
+		 method: :patch do |form| %>
+			<table>
+				<tr>
+					<td colspan="1"><%= form.check_box :d, {class: "form-check-input"} %></td>
+					<td colspan="11">Dirección</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :mi, {class: "form-check-input"} %></td>
+					<td colspan="11">Mandos intermedios</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :t, {class: "form-check-input"} %></td>
+					<td colspan="11">Trabajadores</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :dp, {class: "form-check-input"} %></td>
+					<td colspan="11">Delegados de prevención</td>
+				</tr>
+			</table>
+			<div class="actions">
+				<%= form.submit "Guardar Organización Empresarial", class: "btn btn-dark" %>
+			</div>
+		<% end %>
+	<% end %>

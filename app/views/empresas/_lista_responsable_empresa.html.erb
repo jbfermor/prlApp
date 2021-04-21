@@ -4,7 +4,13 @@
 			<button class="accordion-button" type="button" data-bs-toggle="collapse"
 			 data-bs-target="#collapseResponsable" aria-expanded="true"
 			 aria-controls="collapseResponsable">
-				Responsables
+				Responsables <span class="mx-2">
+				<% if @empresa.responsables.empty? %>
+					<div class="badge bg-danger">
+						No asignado
+					</div>
+				<% end %>
+				</span>
 			</button>
 		</h2>
 		<div id="collapseResponsable" class="accordion-collapse collapse"

@@ -5,12 +5,15 @@
 			data-bs-toggle="collapse" data-bs-target="#collapsePP"
 			aria-expanded="false" aria-controls="collapsePP">
 				Política de Prevención
+				<% if !@empresa.politica_preventiva %>
+					<span class= "mx-2 badge bg-danger">No creado aún</span>
+				<% end %>
 			</button>
 		</h2>
 		<div id="collapsePP" class="accordion-collapse collapse"
 		aria-labelledby="headingCentros" data-bs-parent="#accordionEmpresaDos">
 			<div class="accordion-body">
-				<%= render "empresas/politica_prevencion_form" %>
+				<%= render "politica_preventivas/politica_prevencion_form" %>
 			</div>
 		</div>
 	</div>

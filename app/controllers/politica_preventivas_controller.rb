@@ -1,50 +1,26 @@
 class PoliticaPreventivasController < ApplicationController
 	before_action :authenticate_user!
-  before_action :set_politica_preventiva, only: %i[ show edit update destroy ]
+  before_action :set_politica_preventiva, only: %i[ create update ]
 
-  # GET /politica_preventivas or /politica_preventivas.json
-  def index
+	def new
 		@empresa = Empresa.find(params[:empresa_id])
-    @politica_preventiva = @empresa.politica_preventiva
-  end
+		@politica_preventiva = PoliticaPreventiva.new
+	end
 
-  # GET /politica_preventivas/1 or /politica_preventivas/1.json
-  def show
-		@politica_preventiva = PoliticaPreventiva.find(params[:id])
-		@empresa = @politica_preventiva.empresa
-  end
-
-  # GET /politica_preventivas/new
-  def new
+	def create
 		@empresa = Empresa.find(params[:empresa_id])
-    @politica_preventiva = PoliticaPreventiva.new
-  end
-
-  # GET /politica_preventivas/1/edit
-  def edit
-		@empresa = Empresa.find(params[:id])
-		@politica_preventiva = @empresa.politica_preventiva
-  end
-
-  # POST /politica_preventivas or /politica_preventivas.json
-  def create
-		@empresa = Empresa.find(params[:empresa_id])
-    @politica_preventiva = PoliticaPreventiva.new(politica_preventiva_params)
+		@politica_preventiva = PoliticaPreventiva.new(politica_preventiva_params)
 		@politica_preventiva.empresa_id = @empresa.id
-
     respond_to do |format|
       if @politica_preventiva.save
-        format.html { redirect_to @politica_preventiva, notice: "Politica preventiva was successfully created." }
-        format.json { render :show, status: :created, location: @politica_preventiva }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @politica_preventiva.errors, status: :unprocessable_entity }
+        format.html { redirect_to @empresa, notice: "Politica preventiva was successfully created." }
       end
     end
   end
 
   # PATCH/PUT /politica_preventivas/1 or /politica_preventivas/1.json
   def update
+		@politica_preventiva = PoliticaPreventiva.find(params[:id])
 		@empresa = Empresa.find(@politica_preventiva.empresa_id)
     respond_to do |format|
       if @politica_preventiva.update(politica_preventiva_params)
@@ -69,7 +45,7 @@ class PoliticaPreventivasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_politica_preventiva
-      @politica_preventiva = PoliticaPreventiva.find(params[:id])
+      @politica_preventiva = PoliticaPreventiva.new
     end
 
     # Only allow a list of trusted parameters through.

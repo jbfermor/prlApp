@@ -1,5 +1,7 @@
-<h1>New Politica Preventiva</h1>
+<div class="row">
+	<h1>Política Preventiva de <%= @empresa.razon_social %></h1>
+</div>
 
-<%= render 'form', politica_preventiva: @politica_preventiva %>
-
-<%= link_to 'Back', politica_preventivas_path %>
+<div class="row">
+	<%= render "politica_preventivas/politica_prevencion_form_new" %>
+</div>

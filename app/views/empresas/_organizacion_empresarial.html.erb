@@ -5,12 +5,15 @@
 			data-bs-toggle="collapse" data-bs-target="#collapseEmpresarial"
 			aria-expanded="false" aria-controls="collapseEmpresarial">
 				Organización empresarial
+				<% if !@empresa.organizacion_empresarial %>
+					<span class= "mx-2 badge bg-danger">No creado aún</span>
+				<% end %>
 			</button>
 		</h2>
 		<div id="collapseEmpresarial" class="accordion-collapse collapse"
 		aria-labelledby="headingEmpresarial" data-bs-parent="#accordionEmpresaDos">
 			<div class="accordion-body">
-
+				<%= render "organizacion_empresarials/organizacion_empresarial_form" %>
 			</div>
 		</div>
 	</div>

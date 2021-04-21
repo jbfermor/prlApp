@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  d: 1
+  mi: 1
+  t: 1
+  dp: 1
+  empresa: one
+
+two:
+  d: 1
+  mi: 1
+  t: 1
+  dp: 1
+  empresa: two

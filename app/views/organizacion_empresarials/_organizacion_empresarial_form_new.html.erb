@@ -1,0 +1,39 @@
+
+<%= form_with model: @organizacion_empresarial, url: empresa_organizacion_empresarials_path,
+	 method: :post do |form| %>
+		<% if @organizacion_empresarial.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(organizacion_empresarial.errors.count, "error") %>
+					 prohibited this item from being saved:</h2>
+				<ul>
+					<% organizacion_empresarial.errors.each do |error| %>
+						<li><%= error.full_message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<table>
+			<tr>
+				<td colspan="1"><%= form.check_box :d, {class: "form-check-input"}, 1, 0 %></td>
+				<td colspan="11">Dirección</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :mi, {class: "form-check-input"} %></td>
+				<td colspan="11">Mandos intermedios</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :t, {class: "form-check-input"} %></td>
+				<td colspan="11">Trabajadores</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :dp, {class: "form-check-input"} %></td>
+				<td colspan="11">Delegados de prevención</td>
+			</tr>
+		</table>
+		<div class="actions">
+			<%= form.submit "Guardar Organización Empresarial", class: "btn btn-dark" %>
+		</div>
+	<% end %>
+	<div class="row">
+		<%= link_to "Atrás", @empresa, class: "btn btn-danger" %>
+	</div>

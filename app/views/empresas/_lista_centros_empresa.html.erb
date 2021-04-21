@@ -4,7 +4,13 @@
 			<button class="accordion-button collapsed" type="button"
 			data-bs-toggle="collapse" data-bs-target="#collapseCentros"
 			aria-expanded="false" aria-controls="collapseCentros">
-				Centros
+				Centros <span class="mx-2">
+				<% if @empresa.centros.empty? %>
+					<div class="badge bg-danger">
+						No asignado
+					</div>
+				<% end %>
+				</span>
 			</button>
 		</h2>
 		<div id="collapseCentros" class="accordion-collapse collapse"

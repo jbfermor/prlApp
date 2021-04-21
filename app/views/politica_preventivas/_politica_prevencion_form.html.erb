@@ -1,0 +1,111 @@
+<% if @empresa.politica_preventiva == nil %>
+	<div class="row">
+		<%= link_to "Crear Política de Prevención",
+		  new_empresa_politica_preventiva_path(@empresa),
+		  class: "btn btn-success" %>
+	</div>
+<% else %>
+	<%= form_with model: @politica_preventiva, url: @politica_preventiva,
+	 method: :patch do |form| %>
+		<% if @politica_preventiva.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(politica_preventiva.errors.count, "error") %>
+					 prohibited this item from being saved:</h2>
+				<ul>
+					<% politica_preventiva.errors.each do |error| %>
+						<li><%= error.full_message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<table>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp1, {class: "form-check-input"} %></td>
+				<td colspan="11">Evitar los riegos</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp2, {class: "form-check-input"} %></td>
+				<td colspan="11">Evaluar los riesgos que no se pueden evitar</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp3, {class: "form-check-input"} %></td>
+				<td colspan="11">Compatir los riesgos en su origen</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp4, {class: "form-check-input"} %></td>
+				<td colspan="11">Sustituir lo peligroso por lo que entrañe poco o ningún peligro</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp5, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Planificar la prevención, buscando un conjunto coherente
+					 que integre en ella la técnica, la organización del trabajo,
+					 las condiciones de trabajo, las relaciones sociales y la influencia
+					 de los factores ambientales en el trabajo
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp6, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Adoptar medidas que antepongan la protección colectiva a la individual
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :pp7, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Dar las debidas instrucciones a los trabajadores
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :pp8, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Tener en consideración las capacidades profesionales
+					 de los trabajadores en materia de seguridad
+					 y de salud a la hora de asignar las tareas
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :pp9, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Garantizar que los trabajadores reciben
+					la información suficiente y adecuada para que accedan a las zonas
+					de riesgo grave específico con seguridad
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :pp10, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Prever en las medidas preventivas las posibles distracciones
+					 o imprudencias no temerarias de los trabajadores
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :pp11, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Tener en cuenta los posibles riesgos adicionales generados
+					 por la implantación de las medidas preventivas
+				</td>
+			</tr>
+			<tr>
+				<td colspan="12">Otros compromisos</td>
+			</tr>
+			<tr>
+				<td colspan="12">
+					<%= form.text_area :pp12, size: "70x5", class: "form-input" %>
+				</td>
+			</tr>
+		</table>
+
+		<div class="actions">
+			<%= form.submit "Guardar Política Preventiva", class: "btn btn-dark" %>
+		</div>
+	<% end %>
+<% end %>

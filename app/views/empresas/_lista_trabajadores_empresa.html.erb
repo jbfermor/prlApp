@@ -4,7 +4,13 @@
 			<button class="accordion-button collapsed" type="button"
 			data-bs-toggle="collapse" data-bs-target="#collapseTrabajadores"
 			aria-expanded="false" aria-controls="collapseTrabajadores">
-				Trabajadores
+				Trabajadores <span class="mx-2">
+				<% if @empresa.trabajadors.empty? %>
+					<div class="badge bg-danger">
+						No asignado
+					</div>
+				<% end %>
+				</span>
 			</button>
 		</h2>
 		<div id="collapseTrabajadores" class="accordion-collapse collapse"
