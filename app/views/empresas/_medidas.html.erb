@@ -10,7 +10,30 @@
 		<div id="collapseMedidas" class="accordion-collapse collapse"
 		aria-labelledby="headingMedidas" data-bs-parent="#accordionEmpresaDos">
 			<div class="accordion-body">
-
+				<table>
+					<thead>
+						<tr>
+							<td colspan="12">
+								Centros con medidas de emergencia
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<% @centros_m.each do |c| %>
+							<% if c.medida %>
+								<tr>
+									<td colspan="10"><%= c.nombre %></td>
+									<td colspan="2"><%= link_to mi.visibility, c_path %></td>
+								</tr>
+							<% else %>
+								<tr>
+									<td colspan="10"><%= c.direccion %></td>
+									<td colspan="2"><%= link_to mi.visibility, c %></td>
+								</tr>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

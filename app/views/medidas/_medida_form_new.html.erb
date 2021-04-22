@@ -1,0 +1,317 @@
+
+	<%= form_with model: @medida, url: empresa_medidas_path(@empresa),
+		method: :post do |form| %>
+			<% if @medida.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@medida.errors.count, "error") %>
+						 prohibited this item from being saved:</h2>
+					<ul>
+						<% @medida.errors.each do |error| %>
+							<li><%= error.full_message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<table>
+				<div class="row text-center">
+					<h4>Las situaciones de emergencia a considerar comunes a los centros
+					  de trabajo son incendio, evacuación inmediata y primeros auxilios.
+						Indique otras situaciones de emergencia: </h4>
+				</div>
+				<tr>
+					<td colspan="1"><%= form.check_box :m1, {class: "form-check-input"} %></td>
+					<td colspan="11">Derrames de sustancias químicas</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m2, {class: "form-check-input"} %></td>
+					<td colspan="11">Derrames de combustibles</td>
+				</tr>
+				<tr>
+					<td colspan="12">Otros:</td>
+				</tr>
+				<tr>
+					<td colspan="12">
+						<%= form.text_area :m3, size: "70x5", class: "form-input" %>
+					</td>
+				</tr>
+			</table>
+
+			<div class="row text-center">
+				<h4>Recursos en caso de incendio</h4>
+			</div>
+
+			<table>
+				<tr>
+					<td colspan="1"><%= form.check_box :m4, {class: "form-check-input"} %></td>
+					<td colspan="11">Instalación de seguridad contra incendios
+						perteneciente al edificio donde se ubica la oficina</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m5, {class: "form-check-input"} %></td>
+					<td colspan="11">Instalación de seguridad contra incendios formadas
+						por red de aguas y BIEs (Bocas de Incendio Equipadas)</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m6, {class: "form-check-input"} %></td>
+					<td colspan="11">Sistema de detección automática de incendios</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m7, {class: "form-check-input"} %></td>
+					<td colspan="11">Sistema de actuación automática en caso de incendios (sprinklers)</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m8, {class: "form-check-input"} %></td>
+					<td colspan="11">Extintores</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m9, {class: "form-check-input"} %></td>
+					<td colspan="11">Alumbrado de emergencia</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m10, {class: "form-check-input"} %></td>
+					<td colspan="11">Sistema de Alarmas</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m11, {class: "form-check-input"} %></td>
+					<td colspan="11">Ascensores/montacargas</td>
+				</tr>
+				<tr>
+					<td colspan="8">En caso de contar con extintores, indique su número</td>
+					<td colspan="4"><%= form.number_field :m12, class: "form-input" %></td>
+				</tr>
+				<tr>
+					<td colspan="4">En caso de contar con extintores,
+						indique los tipos y características</td>
+					<td colspan="8"><%= form.text_field :m13, {class: "form-check-input"} %></td
+				</tr>
+
+				<tr>
+					<td colspan="4">
+						<%= image_tag "medidas/extintor.jpg", size: "100x100" %>
+					</td>
+					<td colspan="8">
+						<%= form.label "En caso de contar con extintores,
+						¿cuenta con la preceptiva señal de seguridad?",
+						 class: "form-label" %>
+						<%= form.select :m14, options_for_select({"SI":1, "NO":0}),
+						{},
+						{:class => "form-select"} %>
+					</td>
+				</tr>
+			</table>
+
+			<div class="row text-center">
+				<h4>Recursos en caso de evacuación</h4>
+			</div>
+
+			<table class="align-middle">
+				<tr>
+					<td colspan="12">
+						Indique las señales de salvamento existentes en los recorridos de evacuación:
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m15, {class: "form-check-input"} %></td>
+					<td colspan="5">Recorrido de evacuación horizontal</td>
+					<td colspan="6">
+						<%= image_tag "medidas/salida.png", size: "200x100" %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m16, {class: "form-check-input"} %></td>
+					<td colspan="5">Recorrido de evacuación vertical</td>
+					<td colspan="6">
+						<%= image_tag "medidas/flecha_arriba.png", size: "100x100" %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m17, {class: "form-check-input"} %></td>
+					<td colspan="5">Teléfono de salvamento</td>
+					<td colspan="6">
+						<%= image_tag "medidas/telefono.png", size: "100x100" %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m18, {class: "form-check-input"} %></td>
+					<td colspan="5">Señales de dirección de evacuación</td>
+					<td colspan="6">
+						<%= image_tag "medidas/flecha_derecha.png", size: "100x100" %>
+					</td>
+				</tr>
+			</table>
+
+			<div class="row text-center">
+				<h4>Recursos en caso de primeros auxilios</h4>
+			</div>
+			<table>
+				<tr>
+					<td colspan="12">
+						<%= form.label "¿Dispone de botiquín de primeros auxilios?",
+						 class: "form-label" %>
+						<%= form.select :m19, options_for_select({"SI":1, "NO":0}),
+						{},
+						{:class => "form-select"} %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<%= image_tag "medidas/botiquin.png", size: "100x100" %>
+					</td>
+					<td colspan="8">
+						<%= form.label "¿cuenta con la preceptiva señal de seguridad?",
+						 class: "form-label" %>
+						<%= form.select :m20, options_for_select({"SI":1, "NO":0}),
+						{},
+						{:class => "form-select"} %>
+					</td>
+				</tr>
+			</table>
+
+			<div class="row text-center">
+				<h4>Recursos humanos dispomibles</h4>
+			</div>
+
+			<div class="field">
+		    <%= form.label "Indique nombre y apellidos del Responsable de Emergencias",
+				class: "form-label" %>
+		    <%= form.text_field :m21, class: "form-control" %>
+		  </div>
+			<div class="field">
+		    <%= form.label "Indique nombre y apellidos del primer suplente
+				Responsable de Emergencias", class: "form-label" %>
+		    <%= form.text_field :m22, class: "form-control" %>
+		  </div>
+			<div class="field">
+		    <%= form.label "Indique nombre y apellidos del segundo suplente
+				Responsable de Emergencias (en su caso)", class: "form-label" %>
+		    <%= form.text_field :m23, class: "form-control" %>
+		  </div>
+			<div class="field">
+		    <%= form.label "Indique nombre y apellidos del Responsable de
+				Primeros auxilios", class: "form-label" %>
+		    <%= form.text_field :m24, class: "form-control" %>
+		  </div>
+
+			<div class="row text-center">
+				<h4>Procedimientos de actuación en caso de emergencia</h4>
+			</div>
+
+			<table>
+				<tr>
+					<td colspan="12">
+						<h4>En caso de incendio:</h4>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m25, {class: "form-check-input"} %></td>
+					<td colspan="11">Dar la alarma en el centro de trabajo</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m26, {class: "form-check-input"} %></td>
+					<td colspan="11">Avisar al 112</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m27, {class: "form-check-input"} %></td>
+					<td colspan="11">Avisar a los bomberos</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m28, {class: "form-check-input"} %></td>
+					<td colspan="11">Avisar a otra persona/responsable</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m29, {class: "form-check-input"} %></td>
+					<td colspan="11">Activar el procedimiento de evacuación de personas</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m30, {class: "form-check-input"} %></td>
+					<td colspan="11">Emplear los medios de extinción manual dispomibles</td>
+				</tr>
+				<tr>
+					<td colspan="1"><%= form.check_box :m31, {class: "form-check-input"} %></td>
+					<td colspan="11">Impedir el uso de ascensores/montacargas</td>
+				</tr>
+
+					<tr>
+						<td colspan="12">
+							<h4>En caso de evacuación inmediata:</h4>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="1"><%= form.check_box :m32, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar al 112</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m33, {class: "form-check-input"} %></td>
+						<td colspan="11">Facilitar la evacuación de todas las personas
+							 fuera del edificio</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m34, {class: "form-check-input"} %></td>
+						<td colspan="11">Asegurarse de que todas las personas en el centro
+							 de trabajo son evacuadas</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m35, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar a la policía</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m36, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar a los bomberos</td>
+					</tr>
+
+					<tr>
+						<td colspan="12">
+							<h4>En caso de primeros auxilios:</h4>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="1"><%= form.check_box :m37, {class: "form-check-input"} %></td>
+						<td colspan="11">Atención primaria al afectado
+							(sólo personal competente en materia de primeros auxilios)</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m38, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar al 112</td>
+					</tr>
+
+					<tr>
+						<td colspan="1"><%= form.check_box :m39, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar al centro médico</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m40, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar a la ambulancia</td>
+					</tr>
+					<tr>
+						<td colspan="1"><%= form.check_box :m41, {class: "form-check-input"} %></td>
+						<td colspan="11">Avisar a otra persona/repsonsable</td>
+					</tr>
+			</table>
+
+			<div class="field">
+		    <%= form.label "Teléfono de otra persona/reponsable", class: "form-label" %>
+		    <%= form.number_field :m42, class: "form-control" %>
+		  </div>
+			<div class="field">
+		    <%= form.label "Teléfono de bomberos", class: "form-label" %>
+		    <%= form.number_field :m43, class: "form-control" %>
+		  </div>
+			<div class="field">
+				<%= form.label "Teléfono de policía", class: "form-label" %>
+				<%= form.number_field :m44, class: "form-control" %>
+			</div>
+			<div class="field">
+		    <%= form.label "Teléfono de centro médico", class: "form-label" %>
+		    <%= form.number_field :m45, class: "form-control" %>
+		  </div>
+			<div class="field">
+		    <%= form.label "Teléfono de ambulancia", class: "form-label" %>
+		    <%= form.number_field :m46, class: "form-control" %>
+		  </div>
+
+			<div class="actions">
+				<%= form.submit "Guardar Prácticas y Procedimientos", class: "btn btn-dark" %>
+			</div>
+	<% end %>
