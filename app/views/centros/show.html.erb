@@ -138,7 +138,11 @@
 						</tr>
 						<tr>
 							<th colspan="10">¿Tiene instalación eléctrica de baja tensión?</th>
-							<td colspan="2"><%= @centro.inst_baja_tension %></td>
+							<% if @centro.inst_baja_tension == 0 %>
+								<td colspan="2">NO</td>
+							<% else %>
+								<td colspan="2">SI</td>
+							<% end %>
 						</tr>
 						<tr>
 							<th colspan="6">El cuadro general de protección se ubica en: </th>
@@ -147,17 +151,29 @@
 						<tr>
 							<th colspan="10">¿Tiene centro de transormación (ct) perteneciente
 								al centro de trabajo?</th>
-							<td colspan="2"><%= @centro.es_ct %></td>
+								<% if  @centro.es_ct == 0 %>
+									<td colspan="2">NO</td>
+								<% else %>
+									<td colspan="2">SI</td>
+								<% end %>
 						</tr>
 						<tr>
 							<th colspan="10">En caso afirmativo, ¿está el ct ubicado
 								en el interior de la edificación?</th>
-							<td colspan="2"><%= @centro.ub_interior_ct %></td>
+								<% if @centro.ub_interior_ct == 0 %>
+									<td colspan="2">NO</td>
+								<% else %>
+									<td colspan="2">SI</td>
+								<% end %>
 						</tr>
 						<tr>
 							<th colspan="10">¿Está el ct ubicado en el exterior
 								de una caseta independiente?</th>
-							<td colspan="2"><%= @centro.ub_caseta_ext_ct %></td>
+								<% if @centro.ub_caseta_ext_ct == 0 %>
+									<td colspan="2">NO</td>
+								<% else %>
+									<td colspan="2">SI</td>
+								<% end %>
 						</tr>
 						<tr>
 							<th colspan="2">Potencia del CT</th>
@@ -171,7 +187,11 @@
 						<tr>
 							<th colspan="10">¿Tiene instalación de calefacción/
 								acondicionamiento de aire?</th>
-							<td colspan="2"><%= @centro.es_aacc %></td>
+								<% if @centro.es_aacc == 0 %>
+									<td colspan="2">NO</td>
+								<% else %>
+									<td colspan="2">SI</td>
+								<% end %>
 						</tr>
 						<tr>
 							<th colspan="10">¿Qué tipo de calefacción/
@@ -183,7 +203,11 @@
 						</tr>
 						<tr>
 							<th colspan="10">¿Tiene sistemas de ventilación?</th>
-							<td colspan="2"><%= @centro.es_ventilacion %></td>
+							<% if @centro.es_ventilacion == 0 %>
+								<td colspan="2">NO</td>
+							<% else %>
+								<td colspan="2">SI</td>
+							<% end %>
 						</tr>
 						<tr>
 							<th colspan="6">¿Qué tipo de sistema de ventilación posee?</th>
@@ -194,7 +218,11 @@
 						</tr>
 						<tr>
 							<th colspan="5">¿Tiene ascensores / montagargas?</th>
-							<td colspan="1"><%= @centro.es_ascensor %></td>
+							<% if @centro.es_ascensor == 0 %>
+								<td colspan="1">NO</td>
+							<% else %>
+								<td colspan="1">SI</td>
+							<% end %>
 							<th colspan="5">N. ascensores</th>
 							<td colspan="1"><%= @centro.n_ascensores %></td>
 						</tr>
@@ -203,7 +231,11 @@
 						</tr>
 						<tr>
 							<th colspan="3">¿Tiene sistemas de frío?</th>
-							<td colspan="1"><%= @centro.es_frio %></td>
+							<% if @centro.es_frio == 0 %>
+								<td colspan="1">NO</td>
+							<% else %>
+								<td colspan="1">SI</td>
+							<% end %>
 							<th colspan="3">N. cámaras de frío</th>
 							<td colspan="1"><%= @centro.n_cam_frio %></td>
 							<th colspan="3">N. cámaras de congelados</th>
