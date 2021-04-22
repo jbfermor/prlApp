@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_103520) do
+ActiveRecord::Schema.define(version: 2021_04_22_150622) do
 
   create_table "centros", force: :cascade do |t|
     t.string "nombre"
@@ -101,6 +101,57 @@ ActiveRecord::Schema.define(version: 2021_04_21_103520) do
     t.index ["empresa_id"], name: "index_politica_preventivas_on_empresa_id"
   end
 
+  create_table "practicas", force: :cascade do |t|
+    t.integer "p1"
+    t.integer "p2"
+    t.integer "p3"
+    t.integer "p4"
+    t.integer "p5"
+    t.integer "p6"
+    t.integer "p7"
+    t.integer "p8"
+    t.integer "p9"
+    t.integer "p10"
+    t.integer "p11"
+    t.integer "p12"
+    t.integer "p13"
+    t.integer "p14"
+    t.integer "p15"
+    t.integer "p16"
+    t.integer "p17"
+    t.integer "p18"
+    t.integer "p19"
+    t.integer "p20"
+    t.string "p21"
+    t.integer "p22"
+    t.integer "p23"
+    t.integer "p24"
+    t.integer "p25"
+    t.integer "p26"
+    t.integer "p27"
+    t.integer "p28"
+    t.integer "p29"
+    t.integer "p30"
+    t.integer "p31"
+    t.integer "p32"
+    t.integer "p33"
+    t.integer "p34"
+    t.integer "p35"
+    t.integer "p36"
+    t.integer "p37"
+    t.integer "p38"
+    t.integer "p39"
+    t.integer "p40"
+    t.integer "p41"
+    t.string "p42"
+    t.integer "p43"
+    t.integer "p44"
+    t.integer "empresa_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["empresa_id"], name: "index_practicas_on_empresa_id"
+  end
+
   create_table "responsables", force: :cascade do |t|
     t.string "nombre"
     t.string "apellidos"
@@ -156,6 +207,7 @@ ActiveRecord::Schema.define(version: 2021_04_21_103520) do
   add_foreign_key "centros", "empresas"
   add_foreign_key "organizacion_empresarials", "empresas"
   add_foreign_key "politica_preventivas", "empresas"
+  add_foreign_key "practicas", "empresas"
   add_foreign_key "responsables", "empresas"
   add_foreign_key "trabajadors", "centros"
   add_foreign_key "users", "roles"

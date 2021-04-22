@@ -5,12 +5,15 @@
 			data-bs-toggle="collapse" data-bs-target="#collapsePracticas"
 			aria-expanded="false" aria-controls="collapsePracticas">
 				Prácticas, procedimientos y procesos
+				<% if !@empresa.practica %>
+					<span class= "mx-2 badge bg-danger">No creado aún</span>
+				<% end %>
 			</button>
 		</h2>
 		<div id="collapsePracticas" class="accordion-collapse collapse"
 		aria-labelledby="headingPracticas" data-bs-parent="#accordionEmpresaDos">
 			<div class="accordion-body">
-
+				<%= render "practicas/practica_form" %>
 			</div>
 		</div>
 	</div>

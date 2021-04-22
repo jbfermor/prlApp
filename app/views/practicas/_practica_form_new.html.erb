@@ -1,0 +1,289 @@
+<%= form_with model: @practica, url: empresa_practicas_path,
+	method: :post do |form| %>
+		<% if @practica.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@practica.errors.count, "error") %>
+					 prohibited this item from being saved:</h2>
+				<ul>
+					<% @practica.errors.each do |error| %>
+						<li><%= error.full_message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<table>
+			<div class="row text-center">
+				<h4>Indique los procedimientos de trabajo que mejor reflejen
+				los procesos y prácticas de trabajo realizadas en el centro de trabajo</h4>
+			</div>
+			<tr>
+				<td colspan="1"><%= form.check_box :p1, {class: "form-check-input"} %></td>
+				<td colspan="11">Trato con el público en mostrador, habitualmente de pie</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p2, {class: "form-check-input"} %></td>
+				<td colspan="11">Trato con el público en mostrador, habitualmente sentado</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p3, {class: "form-check-input"} %></td>
+				<td colspan="11">Venta directa al público realizando cobros en efectivo</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p4, {class: "form-check-input"} %></td>
+				<td colspan="11">Trabajo con animales</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p5, {class: "form-check-input"} %></td>
+				<td colspan="11">Trabajo de carga y descarga</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p6, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Contacto con residuos orgánicos, tierras, insectos, etc.
+					(trabajos de jardinería)
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p7, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Contacto con productos químicos por vía dérmica o inhalatoria
+					 (plantas, animales, limpieza, peluquería, etc. )
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :p8, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Cierre del centro de trabajo y activación de alarma antiatracos
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :p9, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Limpieza del centro de trabajo
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :p10, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Elaboración de comidas en cocina, manejo de herramientoas de cocina,
+					fogones, hornos, etc.
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :p11, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Trabajos en almacén apilando material en estanterías altas (a más de 2,5 m.)
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p12, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Subir y bajar por escaleras
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p13, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Subir y bajar usando ascensor
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p14, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Uso de máquinas y/o herramientas
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p15, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Conducción de vehículos
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p16, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Manipulación manual de cargas, uso de carros de comida,
+					carritos de almacenamiento, maceteros, etc.
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p17, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Utilización de botellas de gas (cocinas, etc. )
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p18, {class: "form-check-input"} %></td>
+				<td colspan="11">
+					Actividad ofimática, trabajo con ordenadores
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :p19, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Proceso de planchado y desmanchado
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">
+					<%= form.check_box :p20, {class: "form-check-input"} %>
+				</td>
+				<td colspan="11">
+					Manejo de frutas y verduras
+				</td>
+			</tr>
+			<tr>
+				<td colspan="12">Otros compromisos</td>
+			</tr>
+			<tr>
+				<td colspan="12">
+					<%= form.text_area :p21, size: "70x5", class: "form-input" %>
+				</td>
+			</tr>
+		</table>
+
+		<div class="row">
+			<h4>Procedimientos preventivos</h4>
+		</div>
+
+		<div class="field">
+	    <%= form.label "¿Existe en el centro de trabajo alguna actividad
+			empresarial distinta de la actividad de la empresa? (por ejemplo,
+			obras o compartir centro con otra actividad)",
+			 class: "form-label" %>
+			<%= form.select :p22, options_for_select({"SI":1, "NO":0}),
+			{},
+			{:class => "form-select"} %>
+	  </div>
+
+		<div class="field">
+	    <%= form.label "¿Tiene o puede tener en algún momento trabajadores
+			 que proceden de empresas de trabajo temporal?",
+			 class: "form-label" %>
+			<%= form.select :p23, options_for_select({"SI":1, "NO":0}),
+			{},
+			{:class => "form-select"} %>
+	  </div>
+
+		<div class="row text-center">
+			<h4>Indique los procedimientos de trabajo que mejor reflejen
+			los procesos y prácticas de trabajo realizadas en el centro de trabajo</h4>
+		</div>
+
+		<table>
+			<tr>
+				<td colspan="1"><%= form.check_box :p24, {class: "form-check-input"} %></td>
+				<td colspan="11">Escaleras de mano</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p25, {class: "form-check-input"} %></td>
+				<td colspan="11">Herramientas manuales</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p26, {class: "form-check-input"} %></td>
+				<td colspan="11">Tijeras u otros elementos punzantes</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p27, {class: "form-check-input"} %></td>
+				<td colspan="11">Utensilios de cocina</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p28, {class: "form-check-input"} %></td>
+				<td colspan="11">Escaleras de mano portátiles</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p29, {class: "form-check-input"} %></td>
+				<td colspan="11">Escaleras de tijeras</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p30, {class: "form-check-input"} %></td>
+				<td colspan="11">Máquina de café</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p31, {class: "form-check-input"} %> </td>
+				<td colspan="11">Hornos</td>
+			</tr>
+			<tr>
+				<td colspan="1"> <%= form.check_box :p32, {class: "form-check-input"} %> </td>
+				<td colspan="11">Microondas</td>
+			</tr>
+			<tr>
+				<td colspan="1">	<%= form.check_box :p33, {class: "form-check-input"} %>	</td>
+				<td colspan="11">Máquina de limpieza de ropa</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p34, {class: "form-check-input"} %></td>
+				<td colspan="11">Máquina de coser</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p35, {class: "form-check-input"} %></td>
+				<td colspan="11">Centro de planchado	</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p36, {class: "form-check-input"} %></td>
+				<td colspan="11">Máquina cortadora de fiambre</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p37, {class: "form-check-input"} %></td>
+				<td colspan="11">Lavavajillas</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p38, {class: "form-check-input"} %></td>
+				<td colspan="11">Carretillas manuales</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p39, {class: "form-check-input"} %></td>
+				<td colspan="11">Carretillas eléctricas</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p40, {class: "form-check-input"} %></td>
+				<td colspan="11">Puentes grúa</td>
+			</tr>
+			<tr>
+				<td colspan="1"><%= form.check_box :p41, {class: "form-check-input"} %></td>
+				<td colspan="11">Montacargas</td>
+			</tr>
+
+			<tr>
+				<td colspan="12">Otros compromisos</td>
+			</tr>
+			<tr>
+				<td colspan="12">
+					<%= form.text_area :p42, size: "70x5", class: "form-input" %>
+				</td>
+			</tr>
+		</table>
+
+		<div class="field">
+	    <%= form.label "¿Tiene o prevé que los trabajadores usen equipos
+			 de protección individual?",
+			 class: "form-label" %>
+			<%= form.select :p43, options_for_select({"SI":1, "NO":0}),
+			{},
+			{:class => "form-select"} %>
+	  </div>
+
+		<div class="field">
+	    <%= form.label "¿Ha notificado a la Autoridad Laboral competente
+			LA CONCURRENCIA DE CONDICIONES QUE NO HACEN NECESARIO RECURRIR
+			A LA AUDITORIA DEL SISTEMA DE GESTION DE EMPRESA?",
+			 class: "form-label" %>
+			<%= form.select :p44, options_for_select({"SI":1, "NO":0}),
+			{},
+			{:class => "form-select"} %>
+	  </div>
+
+		<div class="actions">
+			<%= form.submit "Guardar Prácticas y Procedimientos", class: "btn btn-dark" %>
+		</div>
+<% end %>

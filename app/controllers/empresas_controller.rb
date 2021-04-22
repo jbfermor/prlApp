@@ -14,6 +14,7 @@ class EmpresasController < ApplicationController
 		@pagy_inactivo, @t_baja = pagy(empresa.trabajadors.where(activo: 0))
 		@politica_preventiva = empresa.politica_preventiva
 		@organizacion_empresarial = empresa.organizacion_empresarial
+		@practica = empresa.practica
   end
 
   # GET /empresas/new
