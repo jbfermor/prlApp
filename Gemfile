@@ -29,6 +29,8 @@ gem 'pagy', '~> 4.2'
 
 gem 'material_icons', '~> 2.2', '>= 2.2.1'
 
+gem 'docx', :require => ["docx"]
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

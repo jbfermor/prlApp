@@ -19,19 +19,23 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @centros_m.each do |c| %>
-							<% if c.medida %>
-								<tr>
-									<td colspan="10"><%= c.nombre %></td>
-									<td colspan="2"><%= link_to mi.visibility.style("color: blue"),
-										 edit_medida_path, title: "Ver Medidas de Emergencia" %></td>
-								</tr>
-							<% else %>
-								<tr>
-									<td colspan="10"><%= c.nombre %></td>
-									<td colspan="2"><%= link_to mi.trending_up,
-										new_centro_medida_path(c), title: "Crear Medidas de Emergencia" %></td>
-								</tr>
+						<% if @centros_m.empty? %>
+							<p>No hay centros creados todavía</p>
+						<% else %>
+							<% @centros_m.each do |c| %>
+								<% if c.medida %>
+									<tr>
+										<td colspan="10"><%= c.nombre %></td>
+										<td colspan="2"><%= link_to mi.visibility.style("color: blue"),
+											 edit_medida_path, title: "Ver Medidas de Emergencia" %></td>
+									</tr>
+								<% else %>
+									<tr>
+										<td colspan="10"><%= c.nombre %></td>
+										<td colspan="2"><%= link_to mi.trending_up,
+											new_centro_medida_path(c), title: "Crear Medidas de Emergencia" %></td>
+									</tr>
+								<% end %>
 							<% end %>
 						<% end %>
 					</tbody>

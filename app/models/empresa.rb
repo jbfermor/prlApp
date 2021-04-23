@@ -6,4 +6,5 @@ class Empresa < ApplicationRecord
 	has_one :organizacion_empresarial, dependent: :delete
 	has_one :practica, dependent: :delete
 	has_one :presupuesto, dependent: :delete
+
 end

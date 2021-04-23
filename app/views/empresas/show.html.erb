@@ -1,13 +1,3 @@
-
-
-<% if @empresa.centros.empty? %>
-	<div class="row">
-		<div class="alert alert-danger text-center">
-			No hay creado ningún centro
-		</div>
-	</div>
-<% end %>
-
 <div class="row">
 	<h1><%= @empresa.razon_social %></h1>
 </div>
@@ -16,6 +6,11 @@
 	<%= link_to 'Editar', edit_empresa_path(@empresa),
 	class: "btn btn-warning" %>
 </div>
+
+<divd class="row">
+	<%= link_to 'Informe de Prevención', report_empresa_path(@empresa),
+	class: "btn btn-info" %>
+</divd>
 
 <div class="row">
 	<table id="showEmpresa" class="shadow">

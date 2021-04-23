@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-
 	root to: "empresas#index"
 
   resources :empresas, shallow: true do
+		get "report", on: :member
 		resources :responsables
 		resources :politica_preventivas
 		resources :organizacion_empresarials

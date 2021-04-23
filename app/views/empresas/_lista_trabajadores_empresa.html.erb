@@ -26,18 +26,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @t_activos.each do |t| %>
+						<% if @empresa.responsables.empty? %>
 							<tr>
-								<td><%= t.nombre + " " + t.apellidos %></td>
-								<td><%= t.puesto %></td>
-								<td><%= link_to "#{t.centro.nombre}", centro_path(t.centro) %></td>
-								<td><%= link_to mi.visibility.style("color: blue;"),
-									trabajador_path(t), :title =>"Mostrar" %></td>
-								<td><%= link_to mi.settings.style("color: rgb(255,165,0);"),
-									edit_trabajador_path(t), :title => "Editar" %></td>
-								<td><%= link_to mi.block.style("color: red;"),
-									 dar_baja_trabajador_path(t), :title => "Dar de baja" %></td>
+								<td colspan="5">No hay ningún trabajador creado todavía</td>
 							</tr>
+						<% else %>
+							<% @t_activos.each do |t| %>
+								<tr>
+									<td><%= t.nombre + " " + t.apellidos %></td>
+									<td><%= t.puesto %></td>
+									<td><%= link_to "#{t.centro.nombre}", centro_path(t.centro) %></td>
+									<td><%= link_to mi.visibility.style("color: blue;"),
+										trabajador_path(t), :title =>"Mostrar" %></td>
+									<td><%= link_to mi.settings.style("color: rgb(255,165,0);"),
+										edit_trabajador_path(t), :title => "Editar" %></td>
+									<td><%= link_to mi.block.style("color: red;"),
+										 dar_baja_trabajador_path(t), :title => "Dar de baja" %></td>
+								</tr>
+							<% end %>
 						<% end %>
 					</tbody>
 				</table>
