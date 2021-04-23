@@ -14,7 +14,7 @@
 					<thead>
 						<tr>
 							<td colspan="12">
-								Centros con medidas de emergencia
+								Centros
 							</td>
 						</tr>
 					</thead>
@@ -23,12 +23,14 @@
 							<% if c.medida %>
 								<tr>
 									<td colspan="10"><%= c.nombre %></td>
-									<td colspan="2"><%= link_to mi.visibility, c_path %></td>
+									<td colspan="2"><%= link_to mi.visibility.style("color: blue"),
+										 edit_medida_path, title: "Ver Medidas de Emergencia" %></td>
 								</tr>
 							<% else %>
 								<tr>
-									<td colspan="10"><%= c.direccion %></td>
-									<td colspan="2"><%= link_to mi.visibility, c %></td>
+									<td colspan="10"><%= c.nombre %></td>
+									<td colspan="2"><%= link_to mi.trending_up,
+										new_centro_medida_path(c), title: "Crear Medidas de Emergencia" %></td>
 								</tr>
 							<% end %>
 						<% end %>

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 		resources :politica_preventivas
 		resources :organizacion_empresarials
 		resources :practicas
-		resources :medidas
 		resources :centros do
+			resources :medidas
 			resources :trabajadors do
 				member do
 					get "dar_baja"

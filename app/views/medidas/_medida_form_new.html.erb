@@ -1,5 +1,5 @@
 
-	<%= form_with model: @medida, url: empresa_medidas_path(@empresa),
+	<%= form_with model: @medida, url: centro_medidas_path(@centro),
 		method: :post do |form| %>
 			<% if @medida.errors.any? %>
 				<div id="error_explanation">

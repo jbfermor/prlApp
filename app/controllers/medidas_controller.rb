@@ -3,19 +3,26 @@ class MedidasController < ApplicationController
 
   # GET /medidas/new
   def new
-		@empresa = Empresa.find(params[:empresa_id])
+		@centro = Centro.find(params[:centro_id])
     @medida = Medida.new
   end
 
+	def edit
+		@medida = Medida.find(params[:id])
+		@centro = @medida.centro
+		@empresa = Empresa.find(@centro.empresa_id)
+	end
+
   # POST /medidas or /medidas.json
   def create
-		@empresa = Empresa.find(params[:empresa_id])
+		@centro = Centro.find(params[:centro_id])
+		empresa = Empresa.find(@centro.empresa_id)
     @medida = Medida.new(medida_params)
-		@medida.empresa_id = @empresa.id
+		@medida.centro_id = @centro.id
 
     respond_to do |format|
       if @medida.save
-        format.html { redirect_to @empresa, notice: "Medida was successfully created." }
+        format.html { redirect_to empresa, notice: "Medida was successfully created." }
         format.json { render :show, status: :created, location: @medida }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -26,10 +33,11 @@ class MedidasController < ApplicationController
 
   # PATCH/PUT /medidas/1 or /medidas/1.json
   def update
-		@empresa = Empresa.find(@medida.empresa.id)
+		@centro = Centro.find(@medida.centro_id)
+		empresa = Empresa.find(@centro.empresa_id)
     respond_to do |format|
       if @medida.update(medida_params)
-        format.html { redirect_to @empresa, notice: "Medida was successfully updated." }
+        format.html { redirect_to empresa, notice: "Medida was successfully updated." }
         format.json { render :show, status: :ok, location: @medida }
       else
         format.html { render :edit, status: :unprocessable_entity }
