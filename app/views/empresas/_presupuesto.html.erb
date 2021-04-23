@@ -5,12 +5,15 @@
 			data-bs-toggle="collapse" data-bs-target="#collapsePresupuesto"
 			aria-expanded="false" aria-controls="collapsePP">
 				Presupuesto anual
+				<% if !@empresa.presupuesto %>
+					<span class= "mx-2 badge bg-danger">No creado aún</span>
+				<% end %>
 			</button>
 		</h2>
 		<div id="collapsePresupuesto" class="accordion-collapse collapse"
 		aria-labelledby="headingPresupuesto" data-bs-parent="#accordionEmpresaDos">
 			<div class="accordion-body">
-
+				<%= render "presupuestos/presupuesto_form"%>
 			</div>
 		</div>
 	</div>

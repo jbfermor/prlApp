@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_173706) do
+ActiveRecord::Schema.define(version: 2021_04_23_153012) do
 
   create_table "centros", force: :cascade do |t|
     t.string "nombre"
@@ -205,6 +205,30 @@ ActiveRecord::Schema.define(version: 2021_04_22_173706) do
     t.index ["empresa_id"], name: "index_practicas_on_empresa_id"
   end
 
+  create_table "presupuestos", force: :cascade do |t|
+    t.integer "pr1"
+    t.integer "pr2"
+    t.integer "pr"
+    t.integer "pr4"
+    t.integer "pr5"
+    t.integer "pr6"
+    t.integer "pr7"
+    t.integer "pr8"
+    t.integer "pr9"
+    t.integer "pr10"
+    t.integer "pr11"
+    t.integer "pr12"
+    t.integer "pr13"
+    t.integer "pr14"
+    t.integer "pr15"
+    t.integer "pr16"
+    t.integer "pr17"
+    t.integer "empresa_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["empresa_id"], name: "index_presupuestos_on_empresa_id"
+  end
+
   create_table "responsables", force: :cascade do |t|
     t.string "nombre"
     t.string "apellidos"
@@ -262,6 +286,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_173706) do
   add_foreign_key "organizacion_empresarials", "empresas"
   add_foreign_key "politica_preventivas", "empresas"
   add_foreign_key "practicas", "empresas"
+  add_foreign_key "presupuestos", "empresas"
   add_foreign_key "responsables", "empresas"
   add_foreign_key "trabajadors", "centros"
   add_foreign_key "users", "roles"
