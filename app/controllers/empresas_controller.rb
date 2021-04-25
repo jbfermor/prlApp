@@ -17,22 +17,9 @@ class EmpresasController < ApplicationController
 		@practica = empresa.practica
 		@centros_m = empresa.centros
 		@presupuesto = empresa.presupuesto
+		@informes = empresa.informes
   end
 
-	def report
-		require "docx"
-		@empresa = Empresa.find(params[:id])
-		temp_file = Tempfile.new(["temp_docx", ".docx"], "#{Rails.root}/tmp")
-		doc = Docx::Document.open("#{Rails.root}/public/plantillas/PLAN_PREVENCION.docx")
-		doc.paragraphs.each do |p|
-		  p.each_text_run do |tr|
-		    tr.substitute('<nombreEmpresa>', "#{@empresa.razon_social}")
-		  end
-		end
-		doc.save("#{temp_file.path}")
-		send_file temp_file, filename:"#{@empresa.razon_social}_PLAN_PREVENCION.docx",
-		:type => 'application/docx'
-	end
   # GET /empresas/new
   def new
     @empresa = Empresa.new

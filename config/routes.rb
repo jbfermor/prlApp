@@ -3,12 +3,17 @@ Rails.application.routes.draw do
 	root to: "empresas#index"
 
   resources :empresas, shallow: true do
-		get "report", on: :member
+		member do
+			get "report_plan_prevencion"
+		end
 		resources :responsables
 		resources :politica_preventivas
 		resources :organizacion_empresarials
 		resources :practicas
 		resources :presupuestos
+		resources :informes do
+			get "report", on: :member
+		end
 		resources :centros do
 			resources :medidas
 			resources :trabajadors do

@@ -1,0 +1,10 @@
+<div class="row">
+	<h1>Nuevo Informe de: </h1>
+	<h2><%= @empresa.razon_social %></h2>
+</div>
+
+<%= render "informes/informe_form_new" %>
+
+<div class="row">
+	<%= link_to "Atrás", @empresa, class: "btn btn-danger" %>
+</div>

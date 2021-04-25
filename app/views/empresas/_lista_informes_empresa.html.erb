@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="headingInformes">
+			<button class="accordion-button collapsed" type="button"
+			data-bs-toggle="collapse" data-bs-target="#collapseInformes"
+			aria-expanded="false" aria-controls="collapseInformes">
+				Informes <span class="mx-2">
+				<% if @empresa.informes.empty? %>
+					<div class="badge bg-danger">
+						No hay informes creados
+					</div>
+				<% end %>
+				</span>
+			</button>
+		</h2>
+		<div id="collapseInformes" class="accordion-collapse collapse"
+		aria-labelledby="headingInformes" data-bs-parent="#accordionEmpresa">
+			<div class="accordion-body">
+				<table>
+					<thead>
+						<tr>
+							<th>Tipo de informe</th>
+							<th>Fecha del informe</th>
+							<th colspan="2">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% if @empresa.informes.empty? %>
+							<tr>
+								<td colspan="4">No hay ningún centro informe todavía</td>
+							</tr>
+						<% else %>
+							<% @empresa.informes.each do |i| %>
+								<tr>
+									<td><%= i.tipo %></td>
+									<td><%= Time.at(i.fechaFirma).to_date %></td>
+									<td><%= link_to mi.trending_up, report_informe_path(i),
+										:title => "Lanzar" %></td>
+									<td><%= link_to mi.delete.style("color: red;"),
+										 i, method: :delete, data: { confirm: '¿Seguro?' },
+										 :title => "Eliminar" %></td>
+								</tr>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>
+				<div class="col-12 text-end">
+					<%= link_to 'Añadir Informe', new_empresa_informe_path(@empresa),
+					 class: "btn btn-success" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

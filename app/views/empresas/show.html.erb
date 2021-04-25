@@ -7,11 +7,6 @@
 	class: "btn btn-warning" %>
 </div>
 
-<divd class="row">
-	<%= link_to 'Informe de Prevención', report_empresa_path(@empresa),
-	class: "btn btn-info" %>
-</divd>
-
 <div class="row">
 	<table id="showEmpresa" class="shadow">
 		<tr>
@@ -56,6 +51,7 @@
 			<%= render "empresas/lista_responsable_empresa" %>
 			<%= render "empresas/lista_centros_empresa" %>
 			<%= render "empresas/lista_trabajadores_empresa" %>
+			<%= render "empresas/lista_informes_empresa" %>
 		</div>
 </div>
 
