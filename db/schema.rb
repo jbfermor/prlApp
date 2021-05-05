@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_114757) do
   create_table "informes", force: :cascade do |t|
     t.string "tipo"
     t.string "ciudadFirma"
-    t.integer "fechaFirma"
+    t.date "fechaFirma"
     t.integer "empresa_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

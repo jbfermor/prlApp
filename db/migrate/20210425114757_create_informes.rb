@@ -3,7 +3,7 @@ class CreateInformes < ActiveRecord::Migration[6.1]
     create_table :informes do |t|
       t.string :tipo
       t.string :ciudadFirma
-      t.integer :fechaFirma
+      t.date :fechaFirma
       t.references :empresa, null: false, foreign_key: true
 
       t.timestamps

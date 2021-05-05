@@ -33,7 +33,7 @@
 							<% @empresa.informes.each do |i| %>
 								<tr>
 									<td><%= i.tipo %></td>
-									<td><%= Time.at(i.fechaFirma).to_date %></td>
+									<td><%= i.fechaFirma %></td>
 									<td><%= link_to mi.trending_up, report_informe_path(i),
 										:title => "Lanzar" %></td>
 									<td><%= link_to mi.delete.style("color: red;"),
