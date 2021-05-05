@@ -32,6 +32,33 @@ class InformesController < ApplicationController
 		@informe = Informe.find(params[:id])
 		empresa = @informe.empresa
 		@nombreEmpresa = empresa.razon_social
+		@cif = empresa.cif
+		@direccion = empresa.direccion
+		@poblacion = empresa.poblacion
+		@cp = empresa.cp
+		@provincia = empresa.provincia
+		@telefono = empresa.telefono
+		@email = empresa.email
+		@responsables = empresa.responsables
+		@centros = empresa.centros
+		@ciudadFirma = @informe.ciudadFirma
+		@fechaFirma = @informe.fechaFirma.strftime("%d/%m/%Y")
+		oe = OrganizacionEmpresarial.find_by empresa_id: empresa.id
+		@organigrama = []
+
+			if oe.d == 1
+				@organigrama << "Dirección"
+			end
+			if oe.dp == 1
+				@organigrama << "Delegados sinsicales"
+			end
+			if oe.mi == 1
+				@organigrama << "Mandos intermedios"
+			end
+			if oe.t == 1
+				@organigrama << "Trabajadores"
+			end
+
 
 		render_msword "#{Rails.root}/public/plantillas/PLAN_PREVENCION.docx"
 		redirect_to empresa, notice: "Informe creado"
