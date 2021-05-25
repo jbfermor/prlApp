@@ -124,3 +124,8 @@ label {
 
 a {
 	color: white; }
+
+.turbolinks-progress-bar {
+  height: 50px;
+  background-color: green;
+}

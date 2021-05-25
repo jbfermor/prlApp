@@ -11,6 +11,10 @@ class CentrosController < ApplicationController
 		@centro = Centro.find(params[:id])
 		@t_activos = @centro.trabajadors.where(activo: 1)
 		@t_inactivos = @centro.trabajadors.where(activo: 0)
+		@t_incendio = @centro.trabajadors.where(rincendio: 1)
+		@t_evacuacion = @centro.trabajadors.where(revacuacion: 1)
+		@t_auxilio = @centro.trabajadors.where(rauxilio: 1)
+
   end
 
   def new
@@ -56,7 +60,7 @@ class CentrosController < ApplicationController
 		@empresa = Empresa.find(params[:empresa_id])
     @centro = Centro.new(centro_params)
 		@centro.empresa_id = @empresa.id
-		@centro.n_trabajadors = @centro.trabajadors.count
+		@centro.n_trabajadores = @centro.trabajadors.count
 
     respond_to do |format|
       if @centro.save

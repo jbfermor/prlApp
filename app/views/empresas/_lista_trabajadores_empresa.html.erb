@@ -19,20 +19,26 @@
 				<table>
 					<thead>
 						<tr>
+							<th>R</th>
 							<th>Nombre y apellidos</th>
 							<th>Puesto</th>
 							<th>Centro</th>
-							<th colspan="4">Acciones</th>
+							<th colspan="3">Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
-						<% if @empresa.responsables.empty? %>
+						<% if @empresa.trabajadors.empty? %>
 							<tr>
-								<td colspan="5">No hay ningún trabajador creado todavía</td>
+								<td colspan="7">No hay ningún trabajador creado todavía</td>
 							</tr>
 						<% else %>
 							<% @t_activos.each do |t| %>
 								<tr>
+									<td>
+										<% if t.es_responsable == 1 %>
+											<%= mi.done.style("color: green") %>
+										<% end %>
+									</td>
 									<td><%= t.nombre + " " + t.apellidos %></td>
 									<td><%= t.puesto %></td>
 									<td><%= link_to "#{t.centro.nombre}", centro_path(t.centro) %></td>

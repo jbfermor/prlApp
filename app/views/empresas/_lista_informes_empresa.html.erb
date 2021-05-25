@@ -34,8 +34,32 @@
 								<tr>
 									<td><%= i.tipo %></td>
 									<td><%= i.fechaFirma %></td>
-									<td><%= link_to mi.trending_up, report_informe_path(i),
-										:title => "Lanzar" %></td>
+									<td>
+										<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+										title="Emitir informe" >
+											<%= mi.trending_up.style("color:green;") %>
+										</a>
+										<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="staticBackdropLabel">Emitir informe</h5>
+										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										      </div>
+										      <div class="modal-body">
+										        Por favor, cuando emita el informe, espere unaos segundos hasta que
+														 aparezca la descarga
+										      </div>
+										      <div class="modal-footer">
+														<%= link_to "Emitir informe", report_informe_path(i),
+															:title => "Emitir informe", class: "btn btn-success" %>
+										        <button type="button" class="btn btn-danger"
+														 data-bs-dismiss="modal">Cerrar</button>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+									</td>
 									<td><%= link_to mi.delete.style("color: red;"),
 										 i, method: :delete, data: { confirm: '¿Seguro?' },
 										 :title => "Eliminar" %></td>

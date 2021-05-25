@@ -34,6 +34,11 @@
 	    <%= form.text_field :puesto, class: "form-control" %>
 	  </div>
 
+		<div class="field">
+			<%= form.label "Indica si es responsable de la empresa", class: "form-check-label" %>
+			<%= form.check_box :es_responsable, {class: "form-check-input"} %>
+		</div>
+
 		<h3 class="form-label">Situaciones especiales</h3>
 
 		<div class="input-group gap-3 mb-3">
@@ -63,6 +68,25 @@
 				<%= form.check_box :menor, {class: "form-check-input"} %>
 			</div>
 		</div>
+
+		<h3>Responsabilidades</h3>
+
+				<div class="input-group gap-3 mb-3">
+					<div class="input-group-text gap-2">
+						<%= form.label "Incendio", class: "form-check-label" %>
+						<%= form.check_box :rincendio, {class: "form-check-input"} %>
+					</div>
+
+					<div class="input-group-text gap-2">
+						<%= form.label "Evacuación", class: "form-check-label" %>
+						<%= form.check_box :revacuacion, {class: "form-check-input"} %>
+					</div>
+
+					<div class="input-group-text gap-2">
+						<%= form.label "Primeros auxilios", class: "form-check-label" %>
+						<%= form.check_box :rauxilio, {class: "form-check-input"} %>
+					</div>
+				</div>
 
 
 	  <div class="actions">

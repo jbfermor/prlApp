@@ -54,6 +54,40 @@
 		</td>
 	</tr>
 
+	<tr>
+		<th colspan="5">Responsabilidades</th>
+	</tr>
+	<tr>
+		<th>Incendio</th>
+		<th>Evacuación</th>
+		<th>Primeros auxilios</th>
+		<th colspan="2"></th>
+	</tr>
+	<tr>
+		<td>
+			<% if @trabajador.rincendio == 0 %>
+				NO
+			<% else %>
+				SI
+			<% end %>
+		</td>
+		<td>
+			<% if @trabajador.revacuacion == 0 %>
+				NO
+			<% else %>
+				SI
+			<% end %>
+		</td>
+		<td>
+			<% if @trabajador.rauxilio == 0 %>
+				NO
+			<% else %>
+				SI
+			<% end %>
+		</td>
+		<td colspan="2"></td>
+	</tr>
+
 	<% if @trabajador.activo == 1 %>
 		<tr>
 		  <th>Fecha alta:</th>

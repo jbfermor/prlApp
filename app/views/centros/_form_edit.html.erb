@@ -1,5 +1,5 @@
 <div class="row">
-	<%= form_with model: centro, url: centro_path,
+	<%= form_with model: @centro, url: @centro,
 	 		method: :patch do |form| %>
 	  <% if centro.errors.any? %>
 	    <div id="error_explanation">
@@ -200,7 +200,7 @@
 		<div class="field">
 			<%= form.label "¿Qué tipo de calefacción/acondicionamiento de aire?",
 			 class: "form-label" %>
-			<%= form.select :es_aacc, options_for_select(@aacc),
+			<%= form.select :sit_aacc, options_for_select(@aacc),
 			{:prompt => "Selecciona..."},
 			{:class => "form-select"} %>
 		</div>
@@ -213,8 +213,8 @@
 	  </div>
 
 	  <div class="field">
-	    <%= form.label :sit_ventilacion, class: "form-label" %>
-			<%= form.select :es_ventilacion, options_for_select(@s_vent),
+	    <%= form.label "Sistema de ventilación", class: "form-label" %>
+			<%= form.select :sit_ventilacion, options_for_select(@s_vent),
 			{:prompt => "Selecciona..."},
 			{:class => "form-select"} %>
 	  </div>
@@ -254,7 +254,7 @@
 	  <div class="field">
 	    <%= form.label "Indique la ubicación de los equipos compresores:",
 			 class: "form-label" %>
-			<%= form.select :es_frio, options_for_select(@ub_comp),
+			<%= form.select :ub_compresores, options_for_select(@ub_comp),
 			{:prompt => "Selecciona..."},
 			{:class => "form-select"} %>
 	  </div>

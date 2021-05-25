@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_114757) do
+ActiveRecord::Schema.define(version: 2021_05_15_165436) do
 
   create_table "centros", force: :cascade do |t|
     t.string "nombre"
@@ -239,17 +239,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_114757) do
     t.index ["empresa_id"], name: "index_presupuestos_on_empresa_id"
   end
 
-  create_table "responsables", force: :cascade do |t|
-    t.string "nombre"
-    t.string "apellidos"
-    t.string "nif"
-    t.string "cargo"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "empresa_id", null: false
-    t.index ["empresa_id"], name: "index_responsables_on_empresa_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -271,6 +260,10 @@ ActiveRecord::Schema.define(version: 2021_04_25_114757) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "centro_id", null: false
     t.integer "activo"
+    t.integer "rincendio"
+    t.integer "revacuacion"
+    t.integer "rauxilio"
+    t.integer "es_responsable"
     t.index ["centro_id"], name: "index_trabajadors_on_centro_id"
   end
 
@@ -280,12 +273,12 @@ ActiveRecord::Schema.define(version: 2021_04_25_114757) do
     t.integer "telefono"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "role_id", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "role_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
@@ -298,7 +291,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_114757) do
   add_foreign_key "politica_preventivas", "empresas"
   add_foreign_key "practicas", "empresas"
   add_foreign_key "presupuestos", "empresas"
-  add_foreign_key "responsables", "empresas"
   add_foreign_key "trabajadors", "centros"
   add_foreign_key "users", "roles"
 end

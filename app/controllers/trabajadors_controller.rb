@@ -111,6 +111,6 @@ class TrabajadorsController < ApplicationController
     def trabajador_params
       params.require(:trabajador).permit(:nombre, :apellidos, :puesto, :embarazo,
 				 :lactante, :sensible, :discapacidad, :menor, :fecha_alta, :fecha_baja,
-			   :centro_id, :activo)
+			   :centro_id, :activo, :rincendio, :revacuacion, :rauxilio, :es_responsable)
     end
 end

@@ -26,8 +26,8 @@ class PresupuestosController < ApplicationController
 
   # PATCH/PUT /presupuestos/1 or /presupuestos/1.json
   def update
-		@empresa = Empresa.find(@prespuesto.empresa_id)
-		@prespuesto = @empresa.presupuesto
+		@presupuesto = Presupuesto.find(params[:id])
+		@empresa = Empresa.find(@presupuesto.empresa_id)
     respond_to do |format|
       if @presupuesto.update(presupuesto_params)
         format.html { redirect_to @empresa, notice: "Presupuesto was successfully updated." }

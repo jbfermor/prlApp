@@ -1,0 +1,20 @@
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre y apellidos</th>
+				<th>Puesto</th>
+				<th>Centro</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @t_evacuacion.each do |t| %>
+				<tr>
+					<td><%= t.nombre %> <%= t.apellidos %></td>
+					<td><%= t.puesto %></td>
+					<td><%= t.centro.nombre %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
