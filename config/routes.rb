@@ -4,16 +4,14 @@ Rails.application.routes.draw do
 
   resources :empresas, shallow: true do
 		member do
-			get "report_plan_prevencion"
+			get "reportPlan"
 		end
 		resources :responsables
 		resources :politica_preventivas
 		resources :organizacion_empresarials
 		resources :practicas
 		resources :presupuestos
-		resources :informes do
-			get "report", on: :member
-		end
+		resources :informes
 		resources :centros do
 			resources :medidas
 			resources :trabajadors do

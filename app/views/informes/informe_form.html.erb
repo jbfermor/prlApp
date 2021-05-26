@@ -1,21 +1,5 @@
 <div class="row">
-	<%= form_with(model: informe) do |form| %>
-	  <% if informe.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(informe.errors.count, "error") %> prohibited this informe from being saved:</h2>
-
-	      <ul>
-	        <% informe.errors.each do |error| %>
-	          <li><%= error.full_message %></li>
-	        <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-
-	  <div class="field">
-	    <%= form.label "Tipo de informe" %>
-	    <%= form.text_field :tipo %>
-	  </div>
+	<%= form_tag(reportPlan_empresa_path) do |form| %>
 
 	  <div class="field">
 	    <%= form.label "Ciudad de firma" %>
