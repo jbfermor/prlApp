@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 		resources :organizacion_empresarials
 		resources :practicas
 		resources :presupuestos
-		resources :informes
 		resources :centros do
 			resources :medidas
 			resources :trabajadors do
