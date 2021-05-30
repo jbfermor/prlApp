@@ -20,7 +20,6 @@ class EmpresasController < ApplicationController
 		@practica = empresa.practica
 		@centros_m = empresa.centros
 		@presupuesto = empresa.presupuesto
-		@informes = empresa.informes
   end
 
   # GET /empresas/new

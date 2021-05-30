@@ -1,4 +1,7 @@
+require 'openxml_docx_templater'
+
 class CentrosController < ApplicationController
+	include OpenxmlDocxTemplater::Generator
 	before_action :authenticate_user!
   before_action :set_centro, only: %i[ show edit update destroy ]
 
@@ -95,6 +98,24 @@ class CentrosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def reportEval
+		centro = Centro.find(params[:id])
+		empresa = Empresa.find(centro.empresa_id)
+		@nombreEmpresa = empresa.razon_social
+		@actividadCentro = centro.actividad
+		@nombreCentro = centro.nombre
+		@ciudadFirma = params[:ciudadFirma]
+		@fechaFirma = params[:fechaFirma].to_datetime.strftime("%d/%m/%Y")
+		@tAfectados = params[:tAfectados]
+		@tIncluidos = params[:tIncluidos]
+
+		#renderizacion
+		render_msword "#{Rails.root}/public/plantillas/EVALUACION_PUESTO.docx"
+
+		send_file "#{Rails.root}/public/plantillas/EVALUACION_PUESTO_output.docx",
+			:disposition => "attachment"
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.

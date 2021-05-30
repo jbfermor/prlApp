@@ -17,7 +17,7 @@ aria-hidden="true">
       </div>
       <div class="modal-body">
 				<div class="row">
-					<%= form_with url: reportPlan_empresa_path(@empresa),
+					<%= form_with url: reportEval_centro_path(@centro),
 					 method: :get do |form| %>
 					  <div class="field">
 					    <%= form.label "Ciudad de firma", class: "form-label" %>
@@ -28,6 +28,29 @@ aria-hidden="true">
 					    <%= form.label "Fecha de firma", class: "form-label" %>
 					    <%= form.date_field :fechaFirma, class: "form-control" %>
 					  </div>
+
+						<div class="field">
+							<div class="row">
+								<div class="col-4">Trabajador</div>
+								<div class="col">Afectado</div>
+								<div class="col">Incluido</div>
+							</div>
+							<% @t_activos.each do |t| %>
+								<div class="row">
+									<div class="col-4">
+										<%= form.label "#{t.nombre} #{t.apellidos}", class: "form-label" %>
+									</div>
+									<div class="col">
+										<%= form.check_box "tAfectados",
+										{:multiple => true}, "#{t.nombre} #{t.apellidos}", nil %>
+									</div>
+									<div class="col">
+										<%= form.check_box "tIncluidos",
+										{:multiple => true}, "#{t.nombre} #{t.apellidos}", nil %>
+									</div>
+								</div>
+							<% end %>
+						</div>
 
 					  <div class="actions">
 					    <%= form.submit "Emitir informe", class: "btn btn-primary" %>

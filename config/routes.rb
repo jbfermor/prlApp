@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 		resources :practicas
 		resources :presupuestos
 		resources :centros do
+			member do
+				get "reportEval"
+			end
 			resources :medidas
 			resources :trabajadors do
 				member do

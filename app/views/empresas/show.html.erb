@@ -51,7 +51,6 @@
 			<!-- <%=  %> -->
 			<%= render "empresas/lista_centros_empresa" %>
 			<%= render "empresas/lista_trabajadores_empresa" %>
-			<%= render "empresas/lista_informes_empresa" %>
 		</div>
 </div>
 
@@ -64,6 +63,8 @@
 			<%= render "empresas/presupuesto" %>
 		</div>
 </div>
+
+<%= render "empresas/modal_informe_plan" %>
 
 <div class="row">
 		<%= link_to 'Atrás', empresas_path,
