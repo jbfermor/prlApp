@@ -99,7 +99,75 @@ class EmpresasController < ApplicationController
 			if oe.t == 1
 				@organigrama << "Trabajadores"
 			end
+		#Procedimientos
+		@procedimientos = []
+		pr = Practica.find_by empresa_id: empresa.id
+		if pr.p1 == 1
+			@procedimientos << "Trato con el público en mostrador, habitualmente de pie"
+		end
+		if pr.p2 == 1
+			@procedimientos << "Trato con el público en mostrador, habitualmente sentado"
+		end
+		if pr.p3 == 1
+			@procedimientos << "Venta directa al público realizando cobros en efectivo"
+		end
+		if pr.p4 == 1
+			@procedimientos << "Trabajo con animales"
+		end
+		if pr.p5 == 1
+			@procedimientos << "Trabajo de carga y descarga"
+		end
+		if pr.p6 == 1
+			@procedimientos << "Contacto con residuos orgánicos, tierras, insectos, etc. (trabajos de jardinería)"
+		end
+		if pr.p7 == 1
+			@procedimientos << "Contacto con productos químicos por vía dérmica o inhalatoria (plantas, animales, limpieza, peluquería, etc. ) "
+		end
+		if pr.p8 == 1
+			@procedimientos << "- Cierre del centro de trabajo y activación de alarma antiatracos"
+		end
+		if pr.p9 == 1
+			@procedimientos << "- Limpieza del centro de trabajo"
+		end
+		if pr.p10 == 1
+			@procedimientos << "- Elaboración de comidas en cocina, manejo de herramientoas de cocina, fogones, hornos, etc. "
+		end
+		if pr.p11 == 1
+			@procedimientos << "- Trabajos en almacén apilando material en estanterías altas (a más de 2,5 m.) "
+		end
+		if pr.p12 == 1
+			@procedimientos << "- Subir y bajar por escaleras "
+		end
+		if pr.p13 == 1
+			@procedimientos << "- Subir y bajar usando ascensor "
+		end
+		if pr.p14 == 1
+			@procedimientos << "- Uso de máquinas y/o herramientas "
+		end
+		if pr.p15 == 1
+			@procedimientos << "- Conducción de vehículos "
+		end
+		if pr.p16 == 1
+			@procedimientos << "- Manipulación manual de cargas, uso de carros de comida, carritos de almacenamiento, maceteros, etc. "
+		end
+		if pr.p17 == 1
+			@procedimientos << "- Utilización de botellas de gas (cocinas, etc. ) "
+		end
+		if pr.p18 == 1
+			@procedimientos << "- Actividad ofimática, trabajo con ordenadores "
+		end
+		if pr.p19 == 1
+			@procedimientos << "- Proceso de planchado y desmanchado "
+		end
+		if pr.p20 == 1
+			@procedimientos << " Manejo de frutas y verduras "
+		end
+		if !pr.p21.blank?
+			@procedimientos << "- #{pr.p21}"
+		end
 
+
+		#instalaciones
 		@aire_no = "No hay instalación de aire acondicionado"
 		@aire_si = "Instalación de calefacción/acondicionamiento de aire,consistente en "
 		@ventilacion_no = "No hay instalación de ventilación"

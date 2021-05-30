@@ -44,7 +44,7 @@
 						</tr>
 						<tr>
 							<th colspan="4">N. Trabajadores Activos</th>
-							<td colspan="2"><%= @centro.n_trabajadores %></td>
+							<td colspan="2"><%= @centro.trabajadors.where(activo: 1).count %></td>
 							<th colspan="4">Superficie</th>
 							<td colspan="2"><%= @centro.superficie %></td>
 						</tr>
